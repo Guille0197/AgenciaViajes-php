@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> 
 </head>
@@ -47,7 +47,6 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="index.php" class="nav-link">Inicio</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
                 </ul>
             </div>
         </div>
@@ -82,24 +81,24 @@
                         <div class="p-4">
                             <h2>Datos del Viajero 👨🏽‍</h2> <hr> 
                             <!-- Formulario -->
-                            <form>
+                            <form action="codigo.php" method="POST">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Cédula</label>
-                                        <input type="text" class="form-control" placeholder="Cédula">
+                                        <input type="text"  name="cedula" class="form-control" placeholder="Cédula">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Nombre</label>
-                                        <input type="text" class="form-control" placeholder="Nombre completo">
+                                        <input type="text" name="nombre" class="form-control" placeholder="Nombre completo">
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>Dirección</label>
-                                        <input type="text" class="form-control"  placeholder=" Calle 1234 Main St">
+                                        <input type="text" name="direccion" class="form-control"  placeholder=" Calle 1234 Main St">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputCity">Teléfono</label>
-                                         <input type="phone" class="form-control"  placeholder="+507 293-4567">
+                                         <input type="phone" name="telfono" class="form-control"  placeholder="+507 293-4567">
                                     </div>
                                 </div>
 
@@ -107,24 +106,24 @@
                                 <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Código de viaje</label>
-                                            <input type="text" class="form-control" placeholder="Código de viaje">
+                                            <input type="text" name="codViaje" class="form-control" placeholder="Código de viaje">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Número de asientos</label>
-                                            <input type="number" class="form-control" value="1" max="100" min="1">
+                                            <input type="number" name="numAsientos" class="form-control" value="1" max="100" min="1">
                                         </div>
 
                                         <div class="form-group col-md-6">
                                             <label>Costo del viaje</label>
-                                            <input type="number" class="form-control"  placeholder="Dinero">
+                                            <input type="number" name="costo" class="form-control"  placeholder="Dinero">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Fecha</label>
-                                            <input type="text" class="form-control checkin_date" placeholder="Fecha">
+                                            <input type="text" name="fecha" class="form-control checkin_date" placeholder="Fecha">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Hora</label>
-                                            <input type="text" class="form-control" id="timepicker" placeholder="Hora"/>
+                                            <input type="text" name="hora" class="form-control" id="timepicker" placeholder="Hora"/>
                                         </div>
                                     </div>
 
@@ -133,16 +132,16 @@
                                 <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Código </label>
-                                            <input type="text" class="form-control" placeholder="Código de origen">
+                                            <input type="number" name="codOrigen" class="form-control" placeholder="Código de origen">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Nombre del lugar</label>
-                                            <input type="text" class="form-control" placeholder="Nombre del lugar de origen">
+                                            <input type="text" name="nombreOrigen" class="form-control" placeholder="Nombre del lugar de origen">
                                         </div>
 
                                         <div class="form-group col-md-12">
                                             <label>Otros datos</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
+                                            <textarea name="datosOrigen" class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
                                         </div>
                                     </div>
 
@@ -150,27 +149,57 @@
                                 <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Código </label>
-                                            <input type="text" class="form-control" placeholder="Código de destino">
+                                            <input type="number" name="codDestino" class="form-control" placeholder="Código de destino">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Nombre del lugar</label>
-                                            <input type="text" class="form-control" placeholder="Nombre del lugar de destino">
+                                            <input type="text" name="nombreDestino" class="form-control" placeholder="Nombre del lugar de destino">
                                         </div>
 
                                         <div class="form-group col-md-12">
                                             <label>Otros datos</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
+                                            <textarea name="datosDestino" class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
                                         </div>
                                     </div>
                                 <!-- Boton de enviar los datos -->
-                                <button type="submit" class="btn btn-block btn-success py-3 px-5 "> <strong>Enviar Datos</strong></button>
+                                <button type="submit" name="addInfo_btn" class="btn btn-block btn-success py-3 px-5 "> <strong>Enviar Datos</strong></button>
                             </form>
                             <!-- fin formulario -->
                         </div>  
                     </div> <!--Fin de la ventana principal -->
 
             <!-- Consultar Informe  -->
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...cccccccccccccccccccccccc</div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
                 </div>
             </div>
         </div>
