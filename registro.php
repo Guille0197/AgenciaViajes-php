@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>Sun Side🌞 Agencia de Viajes ✈</title>
@@ -27,6 +27,11 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> 
 </head>
 
 <body>
@@ -49,242 +54,131 @@
     </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+        <div class="row no-gutters slider-text  align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.php">Inicio</a></span></p>
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Registrar Datos</h1>
+            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Registrar Datos</h1>
           </div>
         </div>
       </div>
     </div>
 
-    <section class="ftco-section contact-section ftco-degree-bg">
-      <div class="container">
-        <div class="row d-flex mb-5 contact-info">
-          <div class="col-md-12 mb-4">
-            <h2 class="h4">Contact Information</h2>
-          </div>
-          <div class="w-100"></div>
-          <div class="col-md-3">
-            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-          </div>
-          <div class="col-md-3">
-            <p><span>Website</span> <a href="#">yoursite.com</a></p>
-          </div>
-        </div>
-        <div class="row block-9">
-          <div class="col-md-6 order-md-last pr-md-5">
-            <form action="#">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Email">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject">
-              </div>
-              <div class="form-group">
-                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-              </div>
-            </form>
-          
-          </div>
-
-          <div class="col-md-6">
-              <!-- <div id="map"></div> -->
-              <!-- <img src="images/hotel-3.jpg" alt=""> -->
-              
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr>
-
     <div class="container bg-light p-4">
         <div class="row">
             <div class="col-3">
-                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-                        aria-controls="v-pills-home" aria-selected="true"><strong>Registrar</strong></a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-                        aria-controls="v-pills-profile" aria-selected="false"><strong>Informe</strong></a>
-                    <!-- <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-                            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a> -->
+                <div class="text-dark nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class=" text-dark nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><strong>Datos del Viajero 📌</strong></a>
+                    <a class=" text-dark nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><strong>Consultar Informe 📊</strong></a>
                 </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
 
+                    <!-- Datos del Viajero -->
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                         aria-labelledby="v-pills-home-tab">
-                        <!-- Formulario -->
                         <div class="p-4">
+                            <h2>Datos del Viajero 👨🏽‍</h2> <hr> 
+                            <!-- Formulario -->
                             <form>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Email</label>
-                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                        <label>Cédula</label>
+                                        <input type="text" class="form-control" placeholder="Cédula">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Password</label>
-                                        <input type="password" class="form-control" id="inputPassword4"
-                                            placeholder="Password">
+                                        <label>Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Nombre completo">
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Dirección</label>
+                                        <input type="text" class="form-control"  placeholder=" Calle 1234 Main St">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCity">Teléfono</label>
+                                         <input type="phone" class="form-control"  placeholder="+507 293-4567">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress"
-                                        placeholder="1234 Main St">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputAddress2">Address 2</label>
-                                    <input type="text" class="form-control" id="inputAddress2"
-                                        placeholder="Apartment, studio, or floor">
-                                </div>
+
+                                <h2>Datos del Viaje ✈</h2> <hr>
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCity">City</label>
-                                        <input type="text" class="form-control" id="inputCity">
+                                        <div class="form-group col-md-6">
+                                            <label>Código de viaje</label>
+                                            <input type="text" class="form-control" placeholder="Código de viaje">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Número de asientos</label>
+                                            <input type="number" class="form-control" value="1" max="100" min="1">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label>Costo del viaje</label>
+                                            <input type="number" class="form-control"  placeholder="Dinero">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Fecha</label>
+                                            <input type="text" class="form-control checkin_date" placeholder="Fecha">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Hora</label>
+                                            <input type="text" class="form-control" id="timepicker" placeholder="Hora"/>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="inputState">State</label>
-                                        <select id="inputState" class="form-control">
-                                            <option selected>Choose...</option>
-                                            <option>...</option>
-                                        </select>
+
+                                <h2>Datos del Lugar 🌎</h2> <hr>
+                                <h3>Origen</h3>
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Código </label>
+                                            <input type="text" class="form-control" placeholder="Código de origen">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Nombre del lugar</label>
+                                            <input type="text" class="form-control" placeholder="Nombre del lugar de origen">
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label>Otros datos</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="inputZip">Zip</label>
-                                        <input type="text" class="form-control" id="inputZip">
+
+                                <h3>Destino</h3>
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Código </label>
+                                            <input type="text" class="form-control" placeholder="Código de destino">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Nombre del lugar</label>
+                                            <input type="text" class="form-control" placeholder="Nombre del lugar de destino">
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label>Otros datos</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Check me out
-                                        </label>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
+                                <!-- Boton de enviar los datos -->
+                                <button type="submit" class="btn btn-block btn-success py-3 px-5 "> <strong>Enviar Datos</strong></button>
                             </form>
-                        </div>
-                        <!-- fin formulario -->
-                    </div>
+                            <!-- fin formulario -->
+                        </div>  
+                    </div> <!--Fin de la ventana principal -->
 
-
-                    <!--  -->
-                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                        aria-labelledby="v-pills-profile-tab">
-                        <!-- Tabla -->
-                        <table class="table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td colspan="2">Larry the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!-- Fin tabla -->
-                    </div>
+            <!-- Consultar Informe  -->
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...cccccccccccccccccccccccc</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <hr>
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section" id="contact">
+    <footer class="ftco-footer ftco-bg-dark ftco-section p-4" id="contact">
         <div class="container">
-            <div class="row mb-5">
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Sun Side🌞</h2>
-                        <p>Selecciona tu destino preferido para ver los paquetes que tenemos para ti. <br> Con años de
-                            servicio, somos tu agencia de viajes preferida.</p>
-                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4 ml-md-4">
-                        <h2 class="ftco-heading-2">Información</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">Sobre nosotros</a></li>
-                            <li><a href="#" class="py-2 d-block">Consulta en línea</a></li>
-                            <li><a href="#" class="py-2 d-block">Condiciones de reserva</a></li>
-                            <li><a href="#" class="py-2 d-block">Privacidad y politica</a></li>
-                            <li><a href="#" class="py-2 d-block">Politica de reembolso</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Experiencia</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">playa</a></li>
-                            <li><a href="#" class="py-2 d-block">Aventuras</a></li>
-                            <li><a href="#" class="py-2 d-block">Fauna silvestre</a></li>
-                            <li><a href="#" class="py-2 d-block">Luna de miel</a></li>
-                            <li><a href="#" class="py-2 d-block">Naturaleza</a></li>
-                            <li><a href="#" class="py-2 d-block">Fiesta</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">¿Tiene alguna pregunta?</h2>
-                        <div class="block-23 mb-3">
-                            <ul>
-                                <li><span class="icon icon-map-marker"></span><span class="text">507 PTY, San Francisco,
-                                        Panamá, PAN</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+507 392 3929
-                                        </span></a></li>
-                                <li><a href="#"><span class="icon icon-envelope"></span><span
-                                            class="text">info@sunside.com</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-md-12 text-center">
 
@@ -292,7 +186,7 @@
                         Copyright &copy;
                         <script>
                         document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i class="icon-heart"
+                        </script> All rights reserved Sun Side🌞 | This template is made with <i class="icon-heart"
                             aria-hidden="true"></i> by <a href="#" target="_blank">Guillermo Navarro</a>
                     </p>
                 </div>
@@ -308,6 +202,12 @@
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
                 stroke="#F96D00" /></svg></div>
 
+    <!-- DatePicker Time -->
+    <script>
+        $('#timepicker').timepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>

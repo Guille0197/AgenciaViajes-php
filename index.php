@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>Sun Side🌞 Agencia de Viajes ✈</title>
@@ -47,7 +47,7 @@
                     <li class="nav-item"><a href="#hotels" class="nav-link">Hoteles</a></li>
                     <li class="nav-item"><a href="#Restaurant" class="nav-link">Restaurantes</a></li>
                     <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="registro.php" class="nav-link">registrar</a></li>
+                    <li class="nav-item"><a href="registro.php" class="nav-link">Registrar</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
                 </ul>
             </div>
