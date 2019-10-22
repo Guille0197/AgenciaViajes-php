@@ -161,6 +161,27 @@
                                             <textarea name="datosDestino" class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
                                         </div>
                                     </div>
+
+                                    <!--Reservacion  -->
+                                    <h2>Reservación 🧳</h2> <hr>
+                                     <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Código de reservación</label>
+                                            <input type="text" name="codReservacion" class="form-control" placeholder="Código de Reservación">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Fecha</label>
+                                            <input type="text" name="fechaReservacion" class="form-control checkin_date" placeholder="Fecha">
+                                        </div>
+                                       <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="customRadioInline1" name="estado" class="custom-control-input" value="Si">
+                                            <label class="custom-control-label" for="customRadioInline1">Si</label>
+                                        </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="customRadioInline2" name="estado" class="custom-control-input" value="No">
+                                            <label class="custom-control-label" for="customRadioInline2">No</label>
+                                        </div>
+                                    </div>
                                 <!-- Boton de enviar los datos -->
                                 <button type="submit" name="addInfo_btn" class="btn btn-block btn-success py-3 px-5 "> <strong>Enviar Datos</strong></button>
                             </form>

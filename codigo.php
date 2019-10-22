@@ -55,6 +55,16 @@ $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
                 values('$codViaje','$numAsientosV','$costoV','$fechaV','$horaV','$cedulaV','$codOrigen','$codDestino')";
         $consulta =  mysqli_query($conn, $sql);
 
+        //Datos de la RESERVACION
+        $codReservacion = $_POST['codReservacion'];
+        $fechaReservacion = $_POST['fechaReservacion'];
+        $estado = $_POST['estado'];
+
+        //Insertar datos en la tabla reservacion
+        $sql = "INSERT INTO reservacion (codigoReservacion, fecha, estado)
+                values('$codReservacion','$fechaReservacion','$estado')";
+        $consulta =  mysqli_query($conn, $sql);
+
 
     }##
 
