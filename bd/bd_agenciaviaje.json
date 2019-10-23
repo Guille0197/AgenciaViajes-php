@@ -1,0 +1,39 @@
+[
+{"type":"header","version":"4.9.0.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"bd_agenciaviaje"},
+{"type":"table","name":"destino","database":"bd_agenciaviaje","data":
+[
+{"cedulaViajero":"6-722-932","codigoDestino":"508","nombreDestino":"Costa Rica","datosDestino":"Aeropueto de Rio Hato"},
+{"cedulaViajero":"8-962-683","codigoDestino":"555","nombreDestino":"EEUU","datosDestino":"San Francisco, California"}
+]
+}
+,{"type":"table","name":"origen","database":"bd_agenciaviaje","data":
+[
+{"cedulaViajero":"8-962-683","codigoOrigen":"507","nombreOrigen":"Panama","datosOrigen":"Desde el interior del pais"},
+{"cedulaViajero":"6-722-932","codigoOrigen":"5077","nombreOrigen":"Panama","datosOrigen":"Desde la cuidad"}
+]
+}
+,{"type":"table","name":"reservacion","database":"bd_agenciaviaje","data":
+[
+{"cedViajero":"8-962-683","codigoReservacion":"789","fecha":"11\/3\/2019","estado":"Activo"},
+{"cedViajero":"6-722-932","codigoReservacion":"3214","fecha":"10\/24\/2019","estado":"Cancelada"}
+]
+}
+,{"type":"table","name":"user","database":"bd_agenciaviaje","data":
+[
+{"id":"1","username":"admin","passwor":"123","Name":"Administrador"}
+]
+}
+,{"type":"table","name":"viajero","database":"bd_agenciaviaje","data":
+[
+{"cedula":"6-722-932","nombre":"Fernanda Perez","direccion":"Calle Jose Pepe Burgos","telefono":"65654503"},
+{"cedula":"8-962-683","nombre":"Guillermo Navarro","direccion":"Chitre, Ave. Centenario","telefono":"69648040"}
+]
+}
+,{"type":"table","name":"viajes","database":"bd_agenciaviaje","data":
+[
+{"codigoViaje":"1001","numAsientos":"2","costo":"956.99","fecha":"11\/30\/2019","hora":"15:05:00","cedulaViajero":"8-962-683","codigo_Origen":"507","codigo_Destino":"555"},
+{"codigoViaje":"1002","numAsientos":"1","costo":"1.852","fecha":"10\/24\/2019","hora":"10:56:00","cedulaViajero":"6-722-932","codigo_Origen":"507","codigo_Destino":"508"}
+]
+}
+]
