@@ -1,0 +1,48 @@
+<!-- Consultar Datos del Viajero -->
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <!-- Buscar viajero -->
+                    <div class="float-left">
+                        <form  method="POST" class="form-inline">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label class="sr-only">Buscar</label>
+                                <input type="text" class="form-control" placeholder="Cédula del Viajero">
+                            </div>
+                            <button type="submit" name="buscarViajero" class="btn btn-primary mb-2">Buscar 🔍</button>
+                        </form>
+                    </div>
+                    <br>
+
+                    <?php 
+                    $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
+
+                    if (isset($_POST['buscarViajero'])) {
+                    @$cedulaV = $_POST["cedula"];
+                    $sql = "SELECT * FROM viajero where codigo='$cedulaV'";
+                    $consulta =  mysqli_query($conn, $sql);
+                    $fila = mysqli_num_rows($consulta);
+
+                    if ($fila) {
+                        while ($registro = mysqli_fetch_assoc($consulta)) {
+                           $nombreV=$registro["nombre"];
+                           $direccionV=$registro["direccion"];
+                           $telV=$registro["telefono"];
+                        }
+                    }
+                }
+                    
+                    echo"<div class=form-group col-md-6>";
+                        echo"<div class=form-group col-md-6>";
+                            echo"<label>Nombre</label>";
+                            echo"<input type=text name=nombre class=form-control value=".@$nombreV.">";
+                        echo"</div>";
+
+                        echo"<div class=form-group col-md-6>";
+                            echo"<label>Dirección</label>";
+                            echo"<input type=text name=direccion class=form-control value=".@$direccionV.">";
+                        echo"</div>";
+                        echo"<div class=form-group col-md-6>";
+                            echo"<label>Teléfono</label>";
+                            echo"<input type=phone name=telfono class=form-control value=".@$telV.">";
+                    echo"</div>";
+                    
+                    ?>

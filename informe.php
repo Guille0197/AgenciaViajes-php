@@ -68,9 +68,9 @@
         <div class="row">
             <div class="col-3">
                 <div class="text-dark nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class=" text-dark nav-link active" href="registro.php" role="tab" aria-controls="v-pills-home" aria-selected="true"><strong>Registrar Datos 📌</strong></a>
-                    <a class="text-dark nav-link"  href="consultar.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Consultar Viajero 👨🏽‍</strong></a>
-                    <a class=" text-dark nav-link" href="informe.php" role="tab" aria-controls="v-pills-settings" aria-selected="false"><strong>Mostrar Informe 📊</strong></a>
+                    <a class=" text-dark nav-link" id="v-pills-home-tab"  href="registro.php" role="tab" aria-controls="v-pills-home" aria-selected="true"><strong>Registrar Datos 📌</strong></a>
+                    <a class="text-dark nav-link" id="v-pills-messages-tab" href="consultar.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Consultar Viajero 👨🏽‍</strong></a>
+                    <a class=" text-dark nav-link active"  href="informe.php" role="tab" aria-controls="v-pills-settings" aria-selected="false"><strong>Mostrar Informe 📊</strong></a>
                 </div>
             </div>
             <div class="col-9">

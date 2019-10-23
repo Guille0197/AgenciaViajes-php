@@ -66,6 +66,36 @@ $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
         $consulta =  mysqli_query($conn, $sql);
 
 
+        
+
     }##
+
+    //Buscar Datos del viajero
+    if (isset($_POST['buscarViajero'])) {
+        @$cedulaV = $_POST['cedula'];
+
+        $sql = "SELECT * FROM viajero where cedula ='$cedulaV' ";
+
+        $consulta =  mysqli_query($conn, $sql);
+        $fila = mysqli_num_rows($consulta);
+
+        if ($fila) {
+                while ($registro = mysqli_fetch_assoc($consulta)) {
+                   $cedulaV=$registro["cedula"];
+                   $nombreV=$registro["nombre"];
+                   $direccionV=$registro["direccion"];
+                   $telefonoV=$registro["telfono"];
+                }
+            }
+
+        if ($sql) {
+                header('Location: registro.php');
+
+                }
+
+        
+         
+
+    }#
 
 ?>
