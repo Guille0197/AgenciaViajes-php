@@ -48,7 +48,7 @@
                     <li class="nav-item"><a href="#Restaurant" class="nav-link">Restaurantes</a></li>
                     <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
-                    <li class="nav-item"><a href="login.php" class="nav-link">Registrar</a></li>
+                    <li class="nav-item"><a href="login.php" class="nav-link">Iniciar Sesion</a></li>
                 </ul>
             </div>
         </div>
@@ -1139,8 +1139,9 @@
                         Copyright &copy;
                         <script>
                         document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i class="icon-heart"
-                            aria-hidden="true"></i> by <a href="#" target="_blank">Guillermo Navarro</a>
+                        </script> 
+                        All rights reserved Sun Side🌞 | The Project made <i class="icon-heart"
+                            aria-hidden="true"></i> by <a href="https://github.com/Guille0197/AgenciaViajes-php" target="_blank">Guillermo Navarro</a>
                     </p>
                 </div>
             </div>

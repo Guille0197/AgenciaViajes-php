@@ -214,8 +214,9 @@
                         Copyright &copy;
                         <script>
                         document.write(new Date().getFullYear());
-                        </script> All rights reserved Sun Side🌞 | This template is made with <i class="icon-heart"
-                            aria-hidden="true"></i> by <a href="#" target="_blank">Guillermo Navarro</a>
+                        </script>
+                         All rights reserved Sun Side🌞 | The Project made <i class="icon-heart"
+                            aria-hidden="true"></i> by <a href="https://github.com/Guille0197/AgenciaViajes-php" target="_blank">Guillermo Navarro</a>
                     </p>
                 </div>
             </div>
