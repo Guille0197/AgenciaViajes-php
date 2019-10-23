@@ -35,6 +35,8 @@
 </head>
 
 <body>
+    
+<?php include("verificar.php"); ?>
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
@@ -46,7 +48,8 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="index.php" class="nav-link">Inicio</a></li>
+                    <li class="nav-item active"><a href="#" class="nav-link text-dark"><?php  echo "$nombreUser";?></a></li>
+                    <li class="nav-item active"><a href="cerrar.php" class="nav-link">Cerrar Sesion</a></li>
                 </ul>
             </div>
         </div>
@@ -58,7 +61,7 @@
       <div class="container">
         <div class="row no-gutters slider-text  align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Registrar Datos</h1>
+            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Informe de los viajes</h1>
           </div>
         </div>
       </div>
@@ -81,171 +84,121 @@
                         aria-labelledby="v-pills-home-tab">
 
                         <div class="p-4">
-                            <h2>Datos del Viajero 👨🏽‍</h2> <hr> 
-                            <!-- Formulario -->
-                            <form action="codigo.php" method="POST">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label>Cédula</label>
-                                        <input type="text"  name="cedula" class="form-control"  placeholder="Cédula">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Nombre</label>
-                                        <input type="text" name="nombre" class="form-control" placeholder="Nombre completo">
-                                    </div>
+                            <h2>Informe de los viajes programados ✈</h2> <hr> 
+                            <!-- Tabla -->
+                            <?php
+                             include("conexion.php");
+                                $sql = "SELECT * FROM  viajes";
+                                $consulta =  mysqli_query($conn, $sql);
 
-                                    <div class="form-group col-md-6">
-                                        <label>Dirección</label>
-                                        <input type="text" name="direccion" class="form-control"  placeholder=" Calle 1234 Main St">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCity">Teléfono</label>
-                                         <input type="phone" name="telfono" class="form-control"  placeholder="+507 293-4567">
-                                    </div>
-                                </div>
+                                echo "<table class=table-bordered>";
+                                    echo"<thead class=bg-dark>";
+                                        echo "<tr class=text-white>";
+                                            echo "<td class=p-1 align=center> Código Viaje</td>";
+                                            echo "<td align=center> Cantidad Asientos </td>";
+                                            echo "<td class=p-1 align=center> Costo $ </td>";
+                                            echo "<td class=p-1 align=center> Fecha Viaje</td>";
+                                            echo "<td class=p-1 align=center> Hora Viaje</td>";
+                                            echo "<td class=p-1 align=center> Cédula Viajero </td>";
+                                            echo "<td class=p-1 align=center> Código Origen </td>";
+                                            echo "<td class=p-1 align=center> Código Destino </td>";
+                                        echo "</tr>";
+                                    echo"</thead>";
 
-                                <h2>Datos del Viaje ✈</h2> <hr>
-                                <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Código de viaje</label>
-                                            <input type="text" name="codViaje" class="form-control" placeholder="Código de viaje">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Número de asientos</label>
-                                            <input type="number" name="numAsientos" class="form-control" value="1" max="100" min="1">
-                                        </div>
+                                            $linea = mysqli_num_rows($consulta);
 
-                                        <div class="form-group col-md-6">
-                                            <label>Costo del viaje</label>
-                                            <input type="number" name="costo" class="form-control"  placeholder="Dinero">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Fecha</label>
-                                            <input type="text" name="fecha" class="form-control checkin_date" placeholder="Fecha">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Hora</label>
-                                            <input type="text" name="hora" class="form-control" id="timepicker" placeholder="Hora"/>
-                                        </div>
-                                    </div>
+                                if ($linea) {  
 
-                                <h2>Datos del Lugar 🌎</h2> <hr>
-                                <h3>Origen</h3>
-                                <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Código </label>
-                                            <input type="number" name="codOrigen" class="form-control" placeholder="Código de origen">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Nombre del lugar</label>
-                                            <input type="text" name="nombreOrigen" class="form-control" placeholder="Nombre del lugar de origen">
-                                        </div>
+                                    while ($registro = mysqli_fetch_assoc($consulta)) {
+                                        echo"<tr>";
+                                            $codigox = $registro["codigoViaje"];
+                                            echo"<td>";
+                                                echo $codigox;
+                                            echo"</td>";
 
-                                        <div class="form-group col-md-12">
-                                            <label>Otros datos</label>
-                                            <textarea name="datosOrigen" class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
-                                        </div>
-                                    </div>
+                                            echo"<td>";
+                                                echo $registro['numAsientos'];
+                                            echo"</td>";
 
-                                <h3>Destino</h3>
-                                <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Código </label>
-                                            <input type="number" name="codDestino" class="form-control" placeholder="Código de destino">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Nombre del lugar</label>
-                                            <input type="text" name="nombreDestino" class="form-control" placeholder="Nombre del lugar de destino">
-                                        </div>
+                                            echo"<td>";
+                                                echo $registro['costo'];
+                                            echo"</td>";
 
-                                        <div class="form-group col-md-12">
-                                            <label>Otros datos</label>
-                                            <textarea name="datosDestino" class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
-                                        </div>
-                                    </div>
+                                            echo"<td>";
+                                                echo $registro['fecha'];
+                                            echo"</td>";
 
-                                    <!--Reservacion  -->
-                                    <h2>Reservación 🧳</h2> <hr>
-                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Código de reservación</label>
-                                            <input type="text" name="codReservacion" class="form-control" placeholder="Código de Reservación">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Fecha</label>
-                                            <input type="text" name="fechaReservacion" class="form-control checkin_date" placeholder="Fecha">
-                                        </div>
-                                       <div class="p-4">
-                                       <label>Estado de la Reservación</label> <br>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadioInline1" checked name="estado" class="custom-control-input" value="Activa">
-                                                <label class="custom-control-label" for="customRadioInline1">Activa</label>
-                                            </div>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadioInline2" name="estado" class="custom-control-input" value="Cancelada">
-                                                <label class="custom-control-label" for="customRadioInline2">Cancelada</label>
-                                            </div>
-                                       </div>
-                                    </div>
-                                <!-- Boton de enviar los datos -->
-                                <button type="submit" name="addInfo_btn" class="btn btn-block btn-success py-3 px-5 " onclick="alertSave()"> <strong>Enviar Datos</strong></button>
-                            </form>
-                            <!-- fin formulario -->
+                                            echo"<td>";
+                                                echo $registro['hora'];
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['cedulaViajero'];
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['codigo_Origen'];
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['codigo_Destino'];
+                                            echo"</td>";
+
+                                        echo"</tr>";
+                                    }
+                                }
+                                echo "</table>";
+                            ?>
+                            <!-- fin TABLA -->
+                            <br>
+
+                            <h2>Informe de las Reservaciones 🏢</h2> <hr> 
+                            <!-- Tabla -->
+                            <?php
+                             include("conexion.php");
+                                $sql = "SELECT * FROM  reservacion";
+                                $consulta =  mysqli_query($conn, $sql);
+
+                                echo "<table class=table-bordered>";
+                                    echo"<thead class=bg-dark>";
+                                        echo "<tr class=text-white>";
+                                            echo "<td class=p-1 align=center> Cédula Viajero</td>";
+                                            echo "<td class=p-1 align=center> Código Reservación</td>";
+                                            echo "<td class=p-1 align=center> Fecha Reservación</td>";
+                                            echo "<td class=p-1 align=center> Estado Reservación</td>";
+                                        echo "</tr>";
+                                    echo"</thead>";
+
+                                            $linea = mysqli_num_rows($consulta);
+
+                                if ($linea) {  
+
+                                    while ($registro = mysqli_fetch_assoc($consulta)) {
+                                        echo"<tr>";
+                                            $codigox = $registro["cedViajero"];
+                                            echo"<td>";
+                                                echo $codigox;
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['codigoReservacion'];
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['fecha'];
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['estado'];
+                                            echo"</td>";
+                                        echo"</tr>";
+                                    }
+                                }
+                                echo "</table>";
+                            ?>
+                            <!-- fin TABLA -->
                         </div>  
                     </div> <!--Fin de la ventana principal -->
-
-            <!-- Consultar Datos del Viajero -->
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    <!-- Buscar viajero -->
-                    <div class="float-left">
-                        <form action="registro.php" method="POST" class="form-inline">
-                            <div class="form-group mx-sm-3 mb-2">
-                                <label class="sr-only">Buscar</label>
-                                <input type="text" class="form-control" placeholder="Cédula del Viajero">
-                            </div>
-                            <button type="submit" name="buscarViajero" class="btn btn-primary mb-2">Buscar 🔍</button>
-                        </form>
-                    </div>
-                    <br>
-
-                    
-
-            
-            
-             </div>
-
-            <!-- Consultar Informe  -->
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
                 </div>
             </div>
         </div>

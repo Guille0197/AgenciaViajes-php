@@ -35,6 +35,7 @@
 </head>
 
 <body>
+    <?php include("verificar.php"); ?>
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
@@ -46,7 +47,8 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="index.php" class="nav-link">Inicio</a></li>
+                    <li class="nav-item active"><a href="#" class="nav-link text-dark"><?php  echo "$nombreUser";?></a></li>
+                    <li class="nav-item active"><a href="cerrar.php" class="nav-link">Cerrar Sesion</a></li>
                 </ul>
             </div>
         </div>
@@ -58,7 +60,7 @@
       <div class="container">
         <div class="row no-gutters slider-text  align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Registrar Datos</h1>
+            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Consultar Viajero</h1>
           </div>
         </div>
       </div>
@@ -75,11 +77,21 @@
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
-
-                    <!-- Registrar Datos del Viajero -->
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                        aria-labelledby="v-pills-home-tab">
-
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <!-- Buscar viajero -->
+                    <form action="consultar.php" method="POST" > 
+                    <?php include("codigo.php"); ?> <!-- Importo el archivo con todo el codigo php -->
+                        <div class="float-right">
+                                <div class="form-inline form-group mx-sm-3 mb-2">
+                                    <input type="text" class="form-control" name="cedula_viajero" placeholder=" Ingrese Cédula del Viajero">
+                                    <div class="p-1">
+                                        <input type="Image" name="buscarViajero" src="images/buscar.png" value="<?php echo $Fila ?>" class="btn btn-primary mb-2 "> 
+                                    </div>
+                                </div>
+                        </div>
+                    </form>
+                    <br><br>
+                    
                         <div class="p-4">
                             <h2>Datos del Viajero 👨🏽‍</h2> <hr> 
                             <!-- Formulario -->
@@ -87,20 +99,20 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Cédula</label>
-                                        <input type="text"  name="cedula" class="form-control"  placeholder="Cédula">
+                                        <input type="text"  name="cedula" class="form-control" value="<?php echo $cedV ?>" >
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Nombre</label>
-                                        <input type="text" name="nombre" class="form-control" placeholder="Nombre completo">
+                                        <input type="text" name="nombre" class="form-control" value="<?php echo $nombre ?>" >
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>Dirección</label>
-                                        <input type="text" name="direccion" class="form-control"  placeholder=" Calle 1234 Main St">
+                                        <input type="text" name="direccion" class="form-control" value="<?php echo $direccion ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputCity">Teléfono</label>
-                                         <input type="phone" name="telfono" class="form-control"  placeholder="+507 293-4567">
+                                         <input type="phone" name="telfono" class="form-control" value="<?php echo $telfono ?>">
                                     </div>
                                 </div>
 
@@ -108,24 +120,24 @@
                                 <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Código de viaje</label>
-                                            <input type="text" name="codViaje" class="form-control" placeholder="Código de viaje">
+                                            <input type="text" name="codViaje" class="form-control" value="<?php echo $codViaje ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Número de asientos</label>
-                                            <input type="number" name="numAsientos" class="form-control" value="1" max="100" min="1">
+                                            <input type="number" name="numAsientos" class="form-control" value="<?php echo $numAsientos ?>" max="100" min="1">
                                         </div>
 
                                         <div class="form-group col-md-6">
                                             <label>Costo del viaje</label>
-                                            <input type="number" name="costo" class="form-control"  placeholder="Dinero">
+                                            <input type="number" name="costo" class="form-control"  value="<?php echo $costo ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Fecha</label>
-                                            <input type="text" name="fecha" class="form-control checkin_date" placeholder="Fecha">
+                                            <input type="text" name="fecha" class="form-control checkin_date" value="<?php echo $fecha ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Hora</label>
-                                            <input type="text" name="hora" class="form-control" id="timepicker" placeholder="Hora"/>
+                                            <input type="text" name="hora" class="form-control" id="timepicker" value="<?php echo $hora ?>"/>
                                         </div>
                                     </div>
 
@@ -134,16 +146,16 @@
                                 <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Código </label>
-                                            <input type="number" name="codOrigen" class="form-control" placeholder="Código de origen">
+                                            <input type="number" name="codOrigen" class="form-control" value="<?php echo $codOrigen ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Nombre del lugar</label>
-                                            <input type="text" name="nombreOrigen" class="form-control" placeholder="Nombre del lugar de origen">
+                                            <input type="text" name="nombreOrigen" class="form-control" value="<?php echo $nombreOrigen ?>">
                                         </div>
 
                                         <div class="form-group col-md-12">
                                             <label>Otros datos</label>
-                                            <textarea name="datosOrigen" class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
+                                            <textarea type="text" name="datosOrigen" class="form-control" rows="2"> <?php echo $datosOrigen ?> </textarea>
                                         </div>
                                     </div>
 
@@ -151,16 +163,16 @@
                                 <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Código </label>
-                                            <input type="number" name="codDestino" class="form-control" placeholder="Código de destino">
+                                            <input type="number" name="codDestino" class="form-control" value="<?php echo $codDestino ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Nombre del lugar</label>
-                                            <input type="text" name="nombreDestino" class="form-control" placeholder="Nombre del lugar de destino">
+                                            <input type="text" name="nombreDestino" class="form-control" value="<?php echo $nombreDestino ?>">
                                         </div>
 
                                         <div class="form-group col-md-12">
                                             <label>Otros datos</label>
-                                            <textarea name="datosDestino" class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
+                                            <textarea type="text" name="datosDestino" class="form-control" rows="2"> <?php echo $datosDestino ?> </textarea>
                                         </div>
                                     </div>
 
@@ -169,22 +181,15 @@
                                      <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Código de reservación</label>
-                                            <input type="text" name="codReservacion" class="form-control" placeholder="Código de Reservación">
+                                            <input type="text" name="codReservacion" class="form-control"  value="<?php echo $codReservacion ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Fecha</label>
-                                            <input type="text" name="fechaReservacion" class="form-control checkin_date" placeholder="Fecha">
+                                            <input type="text" name="fechaReservacion" class="form-control checkin_date"  value="<?php echo $fechaReservacion ?>">
                                         </div>
                                        <div class="p-4">
                                        <label>Estado de la Reservación</label> <br>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadioInline1" checked name="estado" class="custom-control-input" value="Activa">
-                                                <label class="custom-control-label" for="customRadioInline1">Activa</label>
-                                            </div>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadioInline2" name="estado" class="custom-control-input" value="Cancelada">
-                                                <label class="custom-control-label" for="customRadioInline2">Cancelada</label>
-                                            </div>
+                                            <input type="text" name="estado" class="form-control"  value="<?php echo $estado ?>">                                        
                                        </div>
                                     </div>
                                 <!-- Boton de enviar los datos -->
@@ -193,59 +198,6 @@
                             <!-- fin formulario -->
                         </div>  
                     </div> <!--Fin de la ventana principal -->
-
-            <!-- Consultar Datos del Viajero -->
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    <!-- Buscar viajero -->
-                    <div class="float-left">
-                        <form action="registro.php" method="POST" class="form-inline">
-                            <div class="form-group mx-sm-3 mb-2">
-                                <label class="sr-only">Buscar</label>
-                                <input type="text" class="form-control" placeholder="Cédula del Viajero">
-                            </div>
-                            <button type="submit" name="buscarViajero" class="btn btn-primary mb-2">Buscar 🔍</button>
-                        </form>
-                    </div>
-                    <br>
-
-                    
-
-            
-            
-             </div>
-
-            <!-- Consultar Informe  -->
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
                 </div>
             </div>
         </div>

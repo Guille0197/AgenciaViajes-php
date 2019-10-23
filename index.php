@@ -47,8 +47,8 @@
                     <li class="nav-item"><a href="#hotels" class="nav-link">Hoteles</a></li>
                     <li class="nav-item"><a href="#Restaurant" class="nav-link">Restaurantes</a></li>
                     <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="registro.php" class="nav-link">Registrar</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
+                    <li class="nav-item"><a href="login.php" class="nav-link">Registrar</a></li>
                 </ul>
             </div>
         </div>

@@ -35,6 +35,7 @@
 </head>
 
 <body>
+    <?php include("verificar.php"); ?>
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
@@ -46,7 +47,8 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="index.php" class="nav-link">Inicio</a></li>
+                    <li class="nav-item active"><a href="#" class="nav-link text-dark"><?php  echo "$nombreUser";?></a></li>
+                    <li class="nav-item active"><a href="cerrar.php" class="nav-link">Cerrar Sesion</a></li>
                 </ul>
             </div>
         </div>
@@ -117,7 +119,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label>Costo del viaje</label>
-                                            <input type="number" name="costo" class="form-control"  placeholder="Dinero">
+                                            <input type="number" name="costo" step="0.001" class="form-control"  placeholder="Dinero">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Fecha</label>
@@ -193,64 +195,10 @@
                             <!-- fin formulario -->
                         </div>  
                     </div> <!--Fin de la ventana principal -->
-
-            <!-- Consultar Datos del Viajero -->
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    <!-- Buscar viajero -->
-                    <div class="float-left">
-                        <form action="registro.php" method="POST" class="form-inline">
-                            <div class="form-group mx-sm-3 mb-2">
-                                <label class="sr-only">Buscar</label>
-                                <input type="text" class="form-control" placeholder="Cédula del Viajero">
-                            </div>
-                            <button type="submit" name="buscarViajero" class="btn btn-primary mb-2">Buscar 🔍</button>
-                        </form>
-                    </div>
-                    <br>
-
-                    
-
-            
-            
-             </div>
-
-            <!-- Consultar Informe  -->
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <footer class="ftco-footer ftco-bg-dark ftco-section p-4" id="contact">
         <div class="container">

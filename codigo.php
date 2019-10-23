@@ -1,5 +1,4 @@
 <?php
-session_start();
 $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
 
     // REGISTRO DE LA INFORMACION 
@@ -16,20 +15,19 @@ $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
                 values('$cedulaV','$nombreV','$direccionV','$telefonoV')";
         $consulta =  mysqli_query($conn, $sql);
 
-        //
+        //Devuelve a la pagina 
         if ($sql) {
             header('Location: registro.php');
             }
      
-
         //Datos del Destino
         $codDestino = $_POST['codDestino'];
         $nombreDestino = $_POST['nombreDestino'];
         $datosOrigen = $_POST['datosOrigen'];
 
         //Insertar datos en la tabla destino
-        $sql = "INSERT INTO destino (codigoDestino, nombreDestino, datosDestino)
-                values('$codDestino','$nombreDestino','$datosOrigen')";
+        $sql = "INSERT INTO destino (cedulaViajero, codigoDestino, nombreDestino, datosDestino)
+                values('$cedulaV','$codDestino','$nombreDestino','$datosOrigen')";
         $consulta =  mysqli_query($conn, $sql);
 
         //Datos del Origen
@@ -38,10 +36,9 @@ $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
         $datosDestino = $_POST['datosDestino'];     
         
         //Insertar datos en la tabla Origen
-        $sql = "INSERT INTO origen (codigoOrigen, nombreOrigen, datosOrigen)
-                values('$codOrigen','$nombreOrigen','$datosDestino')";
+        $sql = "INSERT INTO origen (cedulaViajero,codigoOrigen, nombreOrigen, datosOrigen)
+                values('$cedulaV','$codOrigen','$nombreOrigen','$datosDestino')";
         $consulta =  mysqli_query($conn, $sql);
-
 
         //Datos del viaje
         $codViaje = $_POST['codViaje'];
@@ -49,7 +46,7 @@ $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
         $costoV = $_POST['costo'];
         $fechaV = $_POST['fecha'];
         $horaV = $_POST['hora'];
-
+        
         //Insertar datos en la tabla viaje
         $sql = "INSERT INTO viajes (codigoViaje, numAsientos, costo, fecha, hora, cedulaViajero, codigo_Origen, codigo_Destino)
                 values('$codViaje','$numAsientosV','$costoV','$fechaV','$horaV','$cedulaV','$codOrigen','$codDestino')";
@@ -59,43 +56,125 @@ $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
         $codReservacion = $_POST['codReservacion'];
         $fechaReservacion = $_POST['fechaReservacion'];
         $estado = $_POST['estado'];
+        $cedulaV = $_POST['cedula'];
 
         //Insertar datos en la tabla reservacion
-        $sql = "INSERT INTO reservacion (codigoReservacion, fecha, estado)
-                values('$codReservacion','$fechaReservacion','$estado')";
+        $sql = "INSERT INTO reservacion (cedViajero,codigoReservacion, fecha, estado)
+                values('$cedulaV','$codReservacion','$fechaReservacion','$estado')";
         $consulta =  mysqli_query($conn, $sql);
-
-
-        
 
     }##
 
-    //Buscar Datos del viajero
-    if (isset($_POST['buscarViajero'])) {
-        @$cedulaV = $_POST['cedula'];
+        //Buscar Datos del viajero         
+        @$buscar = $_POST["buscarViajero_x"];
+        @$cv = $_POST["cedula_viajero"];
+        @$cedV = $_POST["cedula"];
+        @$nombre = $_POST["nombre"];
+        @$direccion = $_POST["direccion"];
+        @$telfono = $_POST["telfono"];
+        @$codViaje = $_POST["codViaje"];
+        @$numAsientos = $_POST["numAsientos"];
+        @$costo = $_POST["costo"];
+        @$fecha = $_POST["fecha"];
+        @$hora = $_POST["hora"];
+        @$codOrigen = $_POST["codOrigen"];
+        @$nombreOrigen = $_POST["nombreOrigen"];
+        @$datosOrigen = $_POST["datosOrigen"];
+        @$codDestino = $_POST["codDestino"];
+        @$nombreDestino = $_POST["nombreDestino"];
+        @$datosDestino = $_POST["datosDestino"];
+        @$codReservacion = $_POST["codReservacion"];
+        @$fechaReservacion = $_POST["fechaReservacion"];
+        @$estado = $_POST["estado"];
 
-        $sql = "SELECT * FROM viajero where cedula ='$cedulaV' ";
+        if (@$buscar) {                
+                $cv = $_POST["cedula_viajero"];
+                $sql = "SELECT * FROM viajero where cedula ='$cv' ";
 
-        $consulta =  mysqli_query($conn, $sql);
-        $fila = mysqli_num_rows($consulta);
+                //Viajero
+                $consulta =  mysqli_query($conn, $sql);
+                $fila = mysqli_num_rows($consulta);
 
-        if ($fila) {
-                while ($registro = mysqli_fetch_assoc($consulta)) {
-                   $cedulaV=$registro["cedula"];
-                   $nombreV=$registro["nombre"];
-                   $direccionV=$registro["direccion"];
-                   $telefonoV=$registro["telfono"];
+                if ($fila) {
+                        while ($registro = mysqli_fetch_assoc($consulta)) {
+                                $cedV=$registro["cedula"];
+                                $nombre=$registro["nombre"];
+                                $direccion=$registro["direccion"];
+                                $telfono=$registro["telefono"];
+                        }
                 }
-            }
+                
+        }#
 
-        if ($sql) {
-                header('Location: registro.php');
+        //Viaje
+        if (@$buscar) {               
+                $cv = $_POST["cedula_viajero"];
+                $sql = "SELECT * FROM viajes where cedulaViajero ='$cv' ";
+                $consult =  mysqli_query($conn, $sql);
+                @$filas = mysqli_num_rows($consult);
 
+                if ($filas) {
+                        while ($registro = mysqli_fetch_assoc($consult)) {
+                                $codViaje=$registro["codigoViaje"];
+                                $numAsientos=$registro["numAsientos"];
+                                $costo=$registro["costo"];
+                                $fecha=$registro["fecha"];
+                                $hora=$registro["hora"];
+                        }
+                }
+        }#
+
+        //Origen
+        if (@$buscar) {               
+                $cv = $_POST["cedula_viajero"];
+                $sql = "SELECT * FROM origen where cedulaViajero ='$cv' ";
+                $consulta =  mysqli_query($conn, $sql);
+                $fila = mysqli_num_rows($consulta);
+
+                if ($fila) {
+                        while ($registro = mysqli_fetch_assoc($consulta)) {
+                                $codOrigen=$registro["codigoOrigen"];
+                                $nombreOrigen=$registro["nombreOrigen"];
+                                $datosOrigen=$registro["datosOrigen"];
+                        }
                 }
 
-        
-         
+        }#
 
-    }#
+        //Destino
+        if (@$buscar) {               
+                $cv = $_POST["cedula_viajero"];
+                $sql = "SELECT * FROM destino where cedulaViajero ='$cv' ";
+                $consulta =  mysqli_query($conn, $sql);
+                $fila = mysqli_num_rows($consulta);
+
+                if ($fila) {
+                        while ($registro = mysqli_fetch_assoc($consulta)) {
+                                $codDestino=$registro["codigoDestino"];
+                                $nombreDestino=$registro["nombreDestino"];
+                                $datosDestino=$registro["datosDestino"];
+                        }
+                }
+
+        }#
+
+        //Reservacion
+        if (@$buscar) {               
+                $cv = $_POST["cedula_viajero"];
+                $sql = "SELECT * FROM reservacion where cedViajero ='$cv' ";
+                $consulta =  mysqli_query($conn, $sql);
+                $fila = mysqli_num_rows($consulta);
+
+                if ($fila) {
+                        while ($registro = mysqli_fetch_assoc($consulta)) {
+                                $codReservacion=$registro["codigoReservacion"];
+                                $fechaReservacion=$registro["fecha"];
+                                $estado=$registro["estado"];
+                        }
+                }
+
+        }#
+    
+    
 
 ?>
