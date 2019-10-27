@@ -84,10 +84,10 @@
                             aria-controls="v-pills-2" aria-selected="false">Hotel 🏢</a>
 
                         <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
-                            aria-controls="v-pills-3" aria-selected="false">Alquiler de coches 🚗</a>
+                            aria-controls="v-pills-3" aria-selected="false">Alquiler de autos 🚗</a>
                     </div>
                 </div>
-                <div class="col-md-12 tab-wrap">
+                <div class="col-md-12 tab-wrap ">
 
                     <div class="tab-content p-4 px-5" id="v-pills-tabContent">
 
@@ -99,8 +99,18 @@
                                         <div class="form-group">
                                             <label for="#">Origen 📌</label>
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-my_location"></span></div>
-                                                <input type="text" class="form-control" placeholder="Origen">
+                                                <div class="select-wrap">
+                                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                                    <select name="" id="" class="form-control">
+                                                        <option disabled selected>Lugar de Origen</option>
+                                                        <option value="">1</option>
+                                                        <option value="">2</option>
+                                                        <option value="">3</option>
+                                                        <option value="">4</option>
+                                                        <option value="">5</option>
+                                                        <option value="">6</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -108,14 +118,24 @@
                                         <div class="form-group">
                                             <label for="#">Destino🌎</label>
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control" placeholder="Destino">
+                                                <div class="select-wrap">
+                                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                                    <select name="" id="" class="form-control">
+                                                        <option disabled selected>Lugar de Destino</option>
+                                                        <option value="">1</option>
+                                                        <option value="">2</option>
+                                                        <option value="">3</option>
+                                                        <option value="">4</option>
+                                                        <option value="">5</option>
+                                                        <option value="">6</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Registrarse 📅</label>
+                                            <label for="#">Salida 📅</label>
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
                                                 <input type="text" class="form-control checkin_date"
@@ -125,7 +145,7 @@
                                     </div>
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Salida 📆</label>
+                                            <label for="#">Regreso 📆</label>
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
                                                 <input type="text" class="form-control checkout_date"
@@ -223,8 +243,18 @@
                                         <div class="form-group">
                                             <label for="#">De Donde 📌</label>
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control" placeholder="Origen">
+                                                <div class="select-wrap">
+                                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                                    <select name="" id="" class="form-control">
+                                                        <option disabled selected>Lugar de Origen</option>
+                                                        <option value="">1</option>
+                                                        <option value="">2</option>
+                                                        <option value="">3</option>
+                                                        <option value="">4</option>
+                                                        <option value="">5</option>
+                                                        <option value="">6</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -265,35 +295,36 @@
         </div>
     </section>
 
-    <section class="ftco-section bg-light" id="">
+    <!-- <section class="ftco-section  text-white" style="background:linear-gradient(to right, #f2994a, #f2c94c);" id="">        
         <div class="container">
+            <h1 class="text-center">Bienvenidos a Sun Side🌞</h1>
             <div class="row">
                 <div class="col-md-4">
                     <div class="intro ftco-animate">
-                        <h3><span>01</span> Viajes ✈</h3>
+                        <h3>01 Viajes ✈</h3>
                         <p>Encuentra viajes baratos al destino que prefieras, disfruta de unas buenas vacaciones y
                             aprovecha las mejores ofertas de viajes que te ofrecemos.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="intro ftco-animate">
-                        <h3><span>02</span> Experiencia 📷</h3>
+                        <h3>02 Experiencia 📷</h3>
                         <p>Realizar viajes originales es una forma de vivir experiencias únicas, una manera de
                             personalizar nuestra aventura y disfrutar del país de destino al máximo.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="intro ftco-animate">
-                        <h3><span>03</span> Relajamiento 🌴</h3>
+                        <h3>03 Relajamiento 🌴</h3>
                         <p>Las vacaciones son la mejor oportunidad para relajarse, ¡y algunas personas lo toman muy
                             enserio!.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="ftco-section">
+    <section class="ftco-section ">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate">
