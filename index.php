@@ -1,3 +1,7 @@
+<?php
+  $mysqli = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -48,7 +52,7 @@
                     <li class="nav-item"><a href="#Restaurant" class="nav-link">Restaurantes</a></li>
                     <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
-                    <li class="nav-item"><a href="login.php" class="nav-link">Iniciar Sesion</a></li>
+                    <li class="nav-item"><a  type="Button" href="login.php" class="nav-link btn btn-primary">Iniciar Sesion</a></li>
                 </ul>
             </div>
         </div>
@@ -93,22 +97,24 @@
 
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                             aria-labelledby="v-pills-nextgen-tab">
-                            <form action="#" class="search-destination">
+                            <form action="codigo.php" method="POST" class="search-destination">
                                 <div class="row">
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Origen 📌</label>
+                                            <label>Origen 📌</label>
                                             <div class="form-field">
                                                 <div class="select-wrap">
                                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="" id="" class="form-control">
+                                                    <select name="origen"  class="form-control">
                                                         <option disabled selected>Lugar de Origen</option>
-                                                        <option value="">1</option>
-                                                        <option value="">2</option>
-                                                        <option value="">3</option>
-                                                        <option value="">4</option>
-                                                        <option value="">5</option>
-                                                        <option value="">6</option>
+                                                        <?php
+                                                            $query = $mysqli -> query ("SELECT * FROM origen");
+                                                            while ($valorOrigen = mysqli_fetch_array($query)) {
+                                                        ?>
+                                                                <option value="<?php echo $valorOrigen['nombreOrigen'] ?>" > <?php echo $valorOrigen['nombreOrigen'] ?> </option>
+                                                        <?php
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -116,18 +122,20 @@
                                     </div>
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Destino🌎</label>
+                                            <label>Destino🌎</label>
                                             <div class="form-field">
                                                 <div class="select-wrap">
                                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="" id="" class="form-control">
+                                                    <select name="destino" class="form-control">
                                                         <option disabled selected>Lugar de Destino</option>
-                                                        <option value="">1</option>
-                                                        <option value="">2</option>
-                                                        <option value="">3</option>
-                                                        <option value="">4</option>
-                                                        <option value="">5</option>
-                                                        <option value="">6</option>
+                                                        <?php
+                                                            $query = $mysqli -> query ("SELECT * FROM destino");
+                                                            while ($valorDestino = mysqli_fetch_array($query)) {
+                                                        ?>
+                                                                <option value="<?php echo $valorDestino['nombreDestino'] ?>" > <?php echo $valorDestino['nombreDestino'] ?> </option>
+                                                        <?php
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -135,47 +143,29 @@
                                     </div>
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Salida 📅</label>
+                                            <label>Salida 📅</label>
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkin_date"
+                                                <input type="text" name="fechaSalida" class="form-control checkin_date"
                                                     placeholder="Registrarse">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Regreso 📆</label>
+                                            <label>Regreso 📆</label>
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkout_date"
+                                                <input type="text" name="fechaRegreso" class="form-control checkout_date"
                                                     placeholder="Salida">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Viajeros 🧳</label>
-                                            <div class="form-field">
-                                                <div class="select-wrap">
-                                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="" id="" class="form-control">
-                                                        <option value="">1</option>
-                                                        <option value="">2</option>
-                                                        <option value="">3</option>
-                                                        <option value="">4</option>
-                                                        <option value="">5</option>
-                                                        <option value="">6</option>
-                                                    </select>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md align-self-end">
                                         <div class="form-group">
                                             <div class="form-field">
-                                                <input type="submit" value="Buscar"
-                                                    class="form-control btn btn-primary">
+                                                <!-- <input type="submit" value="Buscar" class="form-control btn btn-primary"  onclick="location.href='login.php';"> -->
+                                                <button type="submit" class="form-control btn btn-primary" name="btn_index">BUSCAR</button>
                                             </div>
                                         </div>
                                     </div>
@@ -189,7 +179,7 @@
                                 <div class="row">
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Registrar 📅</label>
+                                            <label>Registrar 📅</label>
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
                                                 <input type="text" class="form-control checkin_date"
@@ -199,7 +189,7 @@
                                     </div>
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Salida 📆</label>
+                                            <label>Salida 📆</label>
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
                                                 <input type="text" class="form-control checkout_date"
@@ -209,7 +199,7 @@
                                     </div>
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Huéspedes 👨‍👨‍👧‍👦</label>
+                                            <label>Huéspedes 👨‍👨‍👧‍👦</label>
                                             <div class="form-field">
                                                 <div class="select-wrap">
                                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
@@ -241,18 +231,18 @@
                                 <div class="row">
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">De Donde 📌</label>
+                                            <label>¿Adónde vas?📌</label>
                                             <div class="form-field">
                                                 <div class="select-wrap">
                                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                                     <select name="" id="" class="form-control">
-                                                        <option disabled selected>Lugar de Origen</option>
-                                                        <option value="">1</option>
-                                                        <option value="">2</option>
-                                                        <option value="">3</option>
-                                                        <option value="">4</option>
-                                                        <option value="">5</option>
-                                                        <option value="">6</option>
+                                                        <option disabled selected>Lugar de Destino</option>
+                                                        <?php
+                                                            $query = $mysqli -> query ("SELECT * FROM destino");
+                                                            while ($valores = mysqli_fetch_array($query)) {
+                                                                echo '<option value="'.$valores[id].'">'.$valores[nombreDestino].'</option>';
+                                                            }
+                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -260,7 +250,7 @@
                                     </div>
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Registrarse 📅</label>
+                                            <label>Registrarse 📅</label>
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
                                                 <input type="text" class="form-control checkin_date"
@@ -270,7 +260,7 @@
                                     </div>
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Salida 📆</label>
+                                            <label>Salida 📆</label>
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
                                                 <input type="text" class="form-control checkout_date"
@@ -294,35 +284,6 @@
             </div>
         </div>
     </section>
-
-    <!-- <section class="ftco-section  text-white" style="background:linear-gradient(to right, #f2994a, #f2c94c);" id="">        
-        <div class="container">
-            <h1 class="text-center">Bienvenidos a Sun Side🌞</h1>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="intro ftco-animate">
-                        <h3>01 Viajes ✈</h3>
-                        <p>Encuentra viajes baratos al destino que prefieras, disfruta de unas buenas vacaciones y
-                            aprovecha las mejores ofertas de viajes que te ofrecemos.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="intro ftco-animate">
-                        <h3>02 Experiencia 📷</h3>
-                        <p>Realizar viajes originales es una forma de vivir experiencias únicas, una manera de
-                            personalizar nuestra aventura y disfrutar del país de destino al máximo.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="intro ftco-animate">
-                        <h3>03 Relajamiento 🌴</h3>
-                        <p>Las vacaciones son la mejor oportunidad para relajarse, ¡y algunas personas lo toman muy
-                            enserio!.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <section class="ftco-section ">
         <div class="container">
@@ -1014,6 +975,34 @@
                                 <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 23</a></div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section" id="">        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="intro ftco-animate">
+                        <h3>01 Viajes ✈</h3>
+                        <p>Encuentra viajes baratos al destino que prefieras, disfruta de unas buenas vacaciones y
+                            aprovecha las mejores ofertas de viajes que te ofrecemos.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="intro ftco-animate">
+                        <h3>02 Experiencia 📷</h3>
+                        <p>Realizar viajes originales es una forma de vivir experiencias únicas, una manera de
+                            personalizar nuestra aventura y disfrutar del país de destino al máximo.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="intro ftco-animate">
+                        <h3>03 Relajamiento 🌴</h3>
+                        <p>Las vacaciones son la mejor oportunidad para relajarse, ¡y algunas personas lo toman muy
+                            enserio!.</p>
                     </div>
                 </div>
             </div>

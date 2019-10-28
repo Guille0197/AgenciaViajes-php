@@ -11,7 +11,7 @@ if(!isset($_SESSION)) {
   if(!$registro[0]) { ?>
 
   	<script lenguage=javascript>
-      alert("Usuario incorrecto");
+      alert("Usuario incorrecto, registrese");
       window.location="login.php";
       </script>
 

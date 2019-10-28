@@ -63,13 +63,13 @@
       </div>
     </div>
 
-    <div class="container bg-light">
+    <!-- <div class="container bg-light">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Sun Side 🌞 | Administrador</h5>
-            <form action=sesion.php method="POST" class="form-signin">
+            <form  class="form-signin">
               <div class="form-label-group">
                 <label for="inputEmail">Nombre de Usuario</label>
                 <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Nombre de usuario" required autofocus>
@@ -86,11 +86,66 @@
               </div>
               <button name="login" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Iniciar</button>
             </form>
+            
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+
+  <!-- /// -->
+  <div class="container login-container bg-light p-5 ">
+    <h5 class="text-center">Sun Side 🌞 ¡Bienvenido ingrese los datos para entrar!</h5>
+            <div class="row">
+                <div class="col-md-6 login-form-1 bg-white">
+                    <h3 class="pt-2">Iniciar Sesión</h3>
+                    <form action=sesion.php method="POST" form-signin>
+                    <div class="form-label-group">
+                      <label for="inputEmail">Nombre de Usuario</label>
+                      <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Nombre de usuario" required autofocus>
+                    </div>
+
+                    <div class="form-label-group pt-2">
+                      <label for="inputPassword">Contraseña</label>
+                      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Contraseña" required>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-3">
+                      <input type="checkbox" class="custom-control-input" id="customCheck1">
+                      <label class="custom-control-label" for="customCheck1">Recordar contraseña</label>
+                    </div>
+                        <div class="form-group">
+                          <button name="login" class="btn btn-lg btn-block btn-primary text-uppercase text-white" type="submit">Iniciar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 login-form-2" style="background: #373B44;">
+                    <h3 class="text-white pt-2">Registrate</h3>
+                    <form action=sesion.php method="POST" form-signin class="text-white">
+                        <div class="form-group ">
+                            <label>Nombre</label>
+                            <input type="text" name="nombreUsuario" class="form-control" placeholder="Nombre"required>
+                        </div>
+                        <div class="form-group ">
+                            <label>Nombre de Usuario</label>
+                            <input type="text" name="nombreUsuario" class="form-control" placeholder="Nombre de Usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword">Contraseña</label>
+                            <input type="password" id="inputPassword" name="pass" class="form-control" placeholder="Contraseña" required> 
+                        </div>
+                        <div class="form-group">
+                          <button name="login" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Registrarse</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+            <!-- //// -->
 
 
     <footer class="ftco-footer ftco-bg-dark ftco-section p-4" id="contact">
