@@ -174,52 +174,7 @@ $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
                 }
         }#
 
-        //  Booking
-        // if (isset($_POST['btn_index'])) {
-
-        //         $fechaSalid = $_POST["fechaSalida"];
-        //         $fechaRegres = $_POST["fechaRegreso"];
-
-         //Insertar datos en la tabla viajes
-        // $sql = "INSERT INTO viajes (fechaSalida, fechaRegreso)
-        //         values('$fechaSalid','$fechaRegres')";
-        // $consulta =  mysqli_query($conn, $sql);
-
-
-        // if ($conn->query($sql) === TRUE) {
-        //              echo "New record created successfully";
-        //          } else {
-        //              echo "Error: " . $sql . "<br>" . $conn->error;
-        //          }
-
-        // //Devuelve a la pagina 
-        // if ($sql) {
-        //     header('Location: registroViaje.php');
-        //     }
-
-                
-                #$valorOrigen = $_POST["valorOrigen"];
-                #$valorDestino = $_POST["valorDestino"];
-
-        #}
-
-
-        
-        // $sql = "SELECT * FROM viajes ";
-        // $consulta =  mysqli_query($conn, $sql);
-        // $fila = mysqli_num_rows($consulta);
-        
-
-        //         if ($fila) {
-        //                 while ($registro = mysqli_fetch_assoc($consulta)) {
-        //                         $fechaSalid=$registro["fechaSalida"];
-        //                         $fechaRegres=$registro["fechaRegreso"];
-
-        //                 }
-        //         }
-
-
-        //  Booking
+        //  RegistroViajes.php
         if (isset($_POST['btn_index'])) {
                 $fechaSalida_index = $_POST['fechaSalida'];
                 $fechaRegreso_index = $_POST['fechaRegreso'];
@@ -230,17 +185,10 @@ $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
                 $sql = "INSERT INTO fechasviajes (fechaSalida, fechaRegreso)
                         values('$fechaSalida_index','$fechaRegreso_index')";
                 $consulta =  mysqli_query($conn, $sql);
+ 
+        }
 
-                //Devuelve a la pagina 
-                if ($sql) {
-                        header('Location: registroViaje.php');
-                }  
-        }//
-
-                
-
-        
-        //Muestra las fechas en registroViaje.php
+        //Muestra las fechas en registroViaje.php desde la BD
                 $sql = "SELECT * FROM fechasviajes ";
                 $consulta =  mysqli_query($conn, $sql);
                 $fila = mysqli_num_rows($consulta);
@@ -251,19 +199,7 @@ $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
                                         $fechaRegreso=$registro["fechaRegreso"];
 
                                 }
-                        }
-
-                        
-        /*if (isset($_POST['origen'])) {
-
-                $lugarOrigen = $_POST['origen'];
-        }
-        if (isset($_POST['destino'])) {
-
-                $lugarDestino = $_POST['destino'];
-        }*/
-        
-        
+                        }  
 
 
 ?>

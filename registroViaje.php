@@ -74,12 +74,12 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label class="font-weight-bold"> Tu código de viaje es:</label>
-                                <input type="Button" class="text-danger btn  btn-lg font-weight-bold" value="<?php echo rand(1,1000); ?> ">
+                                <input type="Button" class="text-danger btn  btn-lg font-weight-bold" value="<?php echo rand(1,10000); ?> ">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Hora de salida</label>
                                 <input type="text" name="hora" class="form-control" id="timepicker"
-                                    placeholder="Hora" />
+                                    placeholder="Hora" require >
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Cantidad de asientos</label>
@@ -111,28 +111,24 @@
 
                             <div class="form-group col-md-6">
                                 <label>Lugar Destino</label>
-                                <input type="text" class="form-control" value="<?php  #echo "$lugarDestino"; ?>" >
+                                <input type="text" class="form-control" value="<?php  echo "$lugarDestino"; ?>" >
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Otros datos del Origen</label>
                                 <textarea name="datosOrigen" class="form-control" id="exampleFormControlTextarea1"
-                                    placeholder="Datos adicionales" rows="2"></textarea>
+                                    placeholder="Datos adicionales" rows="2" require></textarea>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Otros datos del Destino</label>
                                 <textarea name="datosOrigen" class="form-control" id="exampleFormControlTextarea1"
-                                    placeholder="Datos adicionales" rows="2"></textarea>
+                                    placeholder="Datos adicionales" rows="2" require></textarea>
                             </div>
                         </div>
-
-                        
-                            <!-- </div>
-                        </div> -->
                         <!-- Boton de enviar los datos -->
                         <button type="submit" name="add_btn" class="btn btn-block btn-success py-3 px-5 "
-                            onclick="alertSave()" onclick="location.href='login.php'"> <strong>Enviar Datos</strong></button>
+                            onclick="alertSave()"> <strong>Enviar Datos</strong></button>
                     </form>
                     <!-- fin formulario -->
                 </div>

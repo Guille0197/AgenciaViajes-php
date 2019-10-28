@@ -97,7 +97,7 @@
 
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                             aria-labelledby="v-pills-nextgen-tab">
-                            <form action="codigo.php" method="POST" class="search-destination">
+                            <form action="registroViaje.php" method="POST" class="search-destination">
                                 <div class="row">
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
