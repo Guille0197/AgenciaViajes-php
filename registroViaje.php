@@ -62,10 +62,17 @@
     </div>
 
     <div class="container p-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Registro del Viaje</li>
+            </ol>
+        </nav>
         <div class="row bg-white">
             <!-- Registrar Datos del Viaje -->
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="p-4">
+                
                     <!-- Formulario -->
                     <form action="codigo.php" method="POST">
                         
@@ -124,6 +131,10 @@
                                 <label>Otros datos del Destino</label>
                                 <textarea name="datosOrigen" class="form-control" id="exampleFormControlTextarea1"
                                     placeholder="Datos adicionales" rows="2" require></textarea>
+                            </div>
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">Acepta Términos y Condiciones</label>
                             </div>
                         </div>
                         <!-- Boton de enviar los datos -->
