@@ -105,7 +105,7 @@
                                             <div class="form-field">
                                                 <div class="select-wrap">
                                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="origen"  class="form-control">
+                                                    <select name="origen"  class="form-control" require>
                                                         <option disabled selected>Lugar de Origen</option>
                                                         <?php
                                                             $query = $mysqli -> query ("SELECT * FROM origen");
@@ -126,7 +126,7 @@
                                             <div class="form-field">
                                                 <div class="select-wrap">
                                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="destino" class="form-control">
+                                                    <select name="destino" class="form-control" require>
                                                         <option disabled selected>Lugar de Destino</option>
                                                         <?php
                                                             $query = $mysqli -> query ("SELECT * FROM destino");
@@ -147,7 +147,7 @@
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
                                                 <input type="text" name="fechaSalida" class="form-control checkin_date"
-                                                    placeholder="Registrarse">
+                                                    placeholder="Registrarse" require>
                                             </div>
                                         </div>
                                     </div>
@@ -157,7 +157,27 @@
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
                                                 <input type="text" name="fechaRegreso" class="form-control checkout_date"
-                                                    placeholder="Salida">
+                                                    placeholder="Salida" require>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md align-items-end">
+                                        <div class="form-group">
+                                            <label>🪑 Asientos</label>
+                                            <div class="form-field">
+                                                <div class="select-wrap">
+                                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                                    <select name="cant_asientos" id="" class="form-control" require>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

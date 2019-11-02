@@ -1,3 +1,6 @@
+<?php
+  $mysqli = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -72,74 +75,100 @@
             <!-- Registrar Datos del Viaje -->
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="p-4">
-                
                     <!-- Formulario -->
                     <form action="codigo.php" method="POST">
-                        
                         <h2>Datos del Viaje ✈</h2>
                         <hr>
                         <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label class="font-weight-bold"> Tu código de viaje es:</label>
-                                <input type="Button" class="text-danger btn  btn-lg font-weight-bold" value="<?php echo rand(1,10000); ?> ">
+                            <div class="form-group col-md-6">
+                                <label class="font-weight-bold">El costo del viaje es: $</label>
+                                <input type="button" name="codigoViaje" class="text-success btn btn-lg bg-white font-weight-bold" value="<?php echo mt_rand(250,2500); ?> "> 
                             </div>
                             <div class="form-group col-md-6">
+                                <input type="hidden" name="codigoViaje" class="text-danger btn btn-lg bg-white font-weight-bold"  value="<?php echo rand(100,10000); ?> ">
+                            </div>
+                            <div class="form-group col-md-6 ">
                                 <label>Hora de salida</label>
                                 <input type="text" name="hora" class="form-control" id="timepicker"
-                                    placeholder="Hora" require >
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Cantidad de asientos</label>
-                                <select name="" id="" class="form-control">
-                                    <option disabled> Seleccione la cantidad</option>
-                                    <option selected value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
+                                    placeholder="Hora" required>
                             </div>
                             <?php 
                                 include("codigo.php");
                             ?>
                             <div class="form-group col-md-6">
+                                <label>Cantidad de asientos</label>
+                                <select name="cantidadAsientos" id="" class="form-control">
+                                    <option disabled> Seleccione la cantidad</option>
+                                    <option disabled selected value="<?php  echo "$cant_asientos"; ?>"><?php  echo "$cant_asientos"; ?></option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
                                 <label>Fecha Salida</label>
-                                <input type="text" name="fecha" class="form-control checkin_date" value="<?php  echo "$fechaSalida"; ?>">
+                                <input type="text" name="fecha" class="form-control checkin_date" value="<?php  echo "$fechaSalida_index"; ?>">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Fecha Regreso</label>
-                                <input type="text" name="fecha" class="form-control checkin_date"value="<?php  echo "$fechaRegreso"; ?>">
+                                <input type="text" name="fecha" class="form-control checkin_date"value="<?php  echo "$fechaRegreso_index"; ?>">
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label>Lugar Origen</label>
-                                <input type="text" class="form-control" value="<?php  echo "$lugarOrigen"; ?>" >
+                                <label>Lugar Origen </label>
+                                <select name="origen"  class="form-control">
+                                    <option disabled>Seleccione el origen</option>
+                                    <option disabled selected><?php  echo "$lugarOrigen"; ?></option>
+                                    <?php
+                                        $query = $mysqli -> query ("SELECT * FROM origen");
+                                        while ($valorOrigen = mysqli_fetch_array($query)) {
+                                    ?>
+                                            <option value="<?php echo $valorOrigen['nombreOrigen'] ?>" > <?php echo $valorOrigen['nombreOrigen'] ?> </option>
+                                    <?php
+                                        }
+                                    ?>
+                                </select>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Lugar Destino</label>
-                                <input type="text" class="form-control" value="<?php  echo "$lugarDestino"; ?>" >
+                                <select name="destino" class="form-control">
+                                    <option disabled>Seleccione el destino</option>
+                                    <option disabled selected ><?php echo "$lugarDestino"; ?> </option>
+                                    <?php
+                                        $query = $mysqli -> query ("SELECT * FROM destino");
+                                        while ($valorDestino = mysqli_fetch_array($query)) {
+                                    ?>
+                                            <option value="<?php echo $valorDestino['nombreDestino'] ?>" > <?php echo $valorDestino['nombreDestino'] ?> </option>
+                                    <?php
+                                        }
+                                    ?>
+                                </select>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Otros datos del Origen</label>
                                 <textarea name="datosOrigen" class="form-control" id="exampleFormControlTextarea1"
-                                    placeholder="Datos adicionales" rows="2" require></textarea>
+                                    placeholder="Datos adicionales" rows="2" required></textarea>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Otros datos del Destino</label>
                                 <textarea name="datosOrigen" class="form-control" id="exampleFormControlTextarea1"
-                                    placeholder="Datos adicionales" rows="2" require></textarea>
+                                    placeholder="Datos adicionales" rows="2" required></textarea>
                             </div>
-                            <div class="custom-control custom-checkbox mb-3">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <div class="custom-control custom-checkbox mb-3 ">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1" required>
                                 <label class="custom-control-label" for="customCheck1">Acepta Términos y Condiciones</label>
                             </div>
                         </div>
                         <!-- Boton de enviar los datos -->
-                        <button type="submit" name="add_btn" class="btn btn-block btn-success py-3 px-5 "
-                            onclick="alertSave()"> <strong>Enviar Datos</strong></button>
+                        <button type="submit" name="add_btn" class="btn  btn-success py-3 px-5 "> <strong>Siguiente ➡</strong></button>
                     </form>
                     <!-- fin formulario -->
                 </div>
@@ -178,13 +207,6 @@
     $('#timepicker').timepicker({
         uiLibrary: 'bootstrap4'
     });
-    </script>
-
-    <!-- Alert -->
-    <script>
-    function alertSave() {
-        alert("¡Los Datos se han guardado satisfactoriamente 👍🏽!");
-    }
     </script>
 
     <script src="js/jquery.min.js"></script>

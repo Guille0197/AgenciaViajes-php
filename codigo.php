@@ -180,26 +180,27 @@ $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
                 $fechaRegreso_index = $_POST['fechaRegreso'];
                 $lugarOrigen = $_POST['origen'];
                 $lugarDestino = $_POST['destino'];
+                $cant_asientos = $_POST['cant_asientos'];
                 
                 //Insertar datos en la tabla fechasviajes
-                $sql = "INSERT INTO fechasviajes (fechaSalida, fechaRegreso)
-                        values('$fechaSalida_index','$fechaRegreso_index')";
-                $consulta =  mysqli_query($conn, $sql);
+                // $sql = "INSERT INTO fechasviajes (fechaSalida, fechaRegreso)
+                //         values('$fechaSalida_index','$fechaRegreso_index')";
+                // $consulta =  mysqli_query($conn, $sql);
  
         }
 
         //Muestra las fechas en registroViaje.php desde la BD
-                $sql = "SELECT * FROM fechasviajes ";
-                $consulta =  mysqli_query($conn, $sql);
-                $fila = mysqli_num_rows($consulta);
+                // $sql = "SELECT * FROM fechasviajes ";
+                // $consulta =  mysqli_query($conn, $sql);
+                // $fila = mysqli_num_rows($consulta);
                 
-                        if ($fila) {
-                                while ($registro = mysqli_fetch_assoc($consulta)) {
-                                        $fechaSalida=$registro["fechaSalida"];
-                                        $fechaRegreso=$registro["fechaRegreso"];
+                //         if ($fila) {
+                //                 while ($registro = mysqli_fetch_assoc($consulta)) {
+                //                         $fechaSalida=$registro["fechaSalida"];
+                //                         $fechaRegreso=$registro["fechaRegreso"];
 
-                                }
-                        }  
+                //                 }
+                //         }  
 
 
 ?>

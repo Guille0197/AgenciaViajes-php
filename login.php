@@ -57,7 +57,7 @@
       <div class="container">
         <div class="row no-gutters slider-text  align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Iniciar Session</h1>
+            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Iniciar Sessión</h1>
           </div>
         </div>
       </div>
@@ -96,7 +96,7 @@
 
   <!-- /// -->
   <div class="container login-container bg-light p-5 ">
-    <h5 class="text-center">Sun Side 🌞 ¡Bienvenido ingrese los datos para entrar!</h5>
+    <h5 class="text-center">Sun Side 🌞 ¡Bienvenido ingrese los datos!</h5>
             <div class="row">
                 <div class="col-md-6 login-form-1 bg-white">
                     <h3 class="pt-2">Iniciar Sesión</h3>
