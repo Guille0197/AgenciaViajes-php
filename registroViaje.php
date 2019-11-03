@@ -1,5 +1,6 @@
 <?php
-  $mysqli = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
+    include("codigo.php");
+    include("conexion.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -81,8 +82,8 @@
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label class="font-weight-bold">El costo del viaje es: $</label>
-                                <input type="button" name="codigoViaje" class="text-success btn btn-lg bg-white font-weight-bold" value="<?php echo mt_rand(250,2500); ?> "> 
+                                <label class="font-weight-bold">El costo del viaje es: </label>
+                                <input type="button" name="codigoViaje" class="text-success btn btn-lg bg-white font-weight-bold" value="<?php echo "$", mt_rand(250,2500); ?> "> 
                             </div>
                             <div class="form-group col-md-6">
                                 <input type="hidden" name="codigoViaje" class="text-danger btn btn-lg bg-white font-weight-bold"  value="<?php echo rand(100,10000); ?> ">
@@ -92,23 +93,9 @@
                                 <input type="text" name="hora" class="form-control" id="timepicker"
                                     placeholder="Hora" required>
                             </div>
-                            <?php 
-                                include("codigo.php");
-                            ?>
                             <div class="form-group col-md-6">
                                 <label>Cantidad de asientos</label>
-                                <select name="cantidadAsientos" id="" class="form-control">
-                                    <option disabled> Seleccione la cantidad</option>
-                                    <option disabled selected value="<?php  echo "$cant_asientos"; ?>"><?php  echo "$cant_asientos"; ?></option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                </select>
+                                <input type="text" class="form-control" disabled value="<?php  echo "$cant_asientos"; ?>">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Fecha Salida</label>
@@ -121,34 +108,12 @@
 
                             <div class="form-group col-md-6">
                                 <label>Lugar Origen </label>
-                                <select name="origen"  class="form-control">
-                                    <option disabled>Seleccione el origen</option>
-                                    <option disabled selected><?php  echo "$lugarOrigen"; ?></option>
-                                    <?php
-                                        $query = $mysqli -> query ("SELECT * FROM origen");
-                                        while ($valorOrigen = mysqli_fetch_array($query)) {
-                                    ?>
-                                            <option value="<?php echo $valorOrigen['nombreOrigen'] ?>" > <?php echo $valorOrigen['nombreOrigen'] ?> </option>
-                                    <?php
-                                        }
-                                    ?>
-                                </select>
+                                <input type="text" class="form-control" disabled value="<?php  echo "$lugarOrigen"; ?>">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Lugar Destino</label>
-                                <select name="destino" class="form-control">
-                                    <option disabled>Seleccione el destino</option>
-                                    <option disabled selected ><?php echo "$lugarDestino"; ?> </option>
-                                    <?php
-                                        $query = $mysqli -> query ("SELECT * FROM destino");
-                                        while ($valorDestino = mysqli_fetch_array($query)) {
-                                    ?>
-                                            <option value="<?php echo $valorDestino['nombreDestino'] ?>" > <?php echo $valorDestino['nombreDestino'] ?> </option>
-                                    <?php
-                                        }
-                                    ?>
-                                </select>
+                                <input type="text" class="form-control" disabled value="<?php  echo "$lugarDestino"; ?>">
                             </div>
 
                             <div class="form-group col-md-6">

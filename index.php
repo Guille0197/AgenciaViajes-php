@@ -52,6 +52,7 @@
                     <li class="nav-item"><a href="#Restaurant" class="nav-link">Restaurantes</a></li>
                     <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
+                    <li class="nav-item"><a href="dashboards/index.php" class="nav-link">Dashboard</a></li>
                     <li class="nav-item"><a  type="Button" href="login.php" class="nav-link btn btn-primary">Iniciar Sesion</a></li>
                 </ul>
             </div>
@@ -105,8 +106,8 @@
                                             <div class="form-field">
                                                 <div class="select-wrap">
                                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="origen"  class="form-control" require>
-                                                        <option disabled selected>Lugar de Origen</option>
+                                                    <select name="origen"  class="form-control">
+                                                        <option disabled selected >Lugar de Origen</option>
                                                         <?php
                                                             $query = $mysqli -> query ("SELECT * FROM origen");
                                                             while ($valorOrigen = mysqli_fetch_array($query)) {
@@ -126,8 +127,8 @@
                                             <div class="form-field">
                                                 <div class="select-wrap">
                                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="destino" class="form-control" require>
-                                                        <option disabled selected>Lugar de Destino</option>
+                                                    <select name="destino" class="form-control">
+                                                        <option disabled selected >Lugar de Destino</option>
                                                         <?php
                                                             $query = $mysqli -> query ("SELECT * FROM destino");
                                                             while ($valorDestino = mysqli_fetch_array($query)) {
@@ -147,7 +148,7 @@
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
                                                 <input type="text" name="fechaSalida" class="form-control checkin_date"
-                                                    placeholder="Registrarse" require>
+                                                    placeholder="Registrarse" required>
                                             </div>
                                         </div>
                                     </div>
@@ -157,7 +158,7 @@
                                             <div class="form-field">
                                                 <div class="icon"><span class="icon-map-marker"></span></div>
                                                 <input type="text" name="fechaRegreso" class="form-control checkout_date"
-                                                    placeholder="Salida" require>
+                                                    placeholder="Salida" required>
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +168,7 @@
                                             <div class="form-field">
                                                 <div class="select-wrap">
                                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="cant_asientos" id="" class="form-control" require>
+                                                    <select name="cant_asientos" id="" class="form-control" required>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
