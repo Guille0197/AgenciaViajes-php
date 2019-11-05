@@ -52,7 +52,6 @@
                     <li class="nav-item"><a href="#Restaurant" class="nav-link">Restaurantes</a></li>
                     <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
-                    <li class="nav-item"><a href="dashboards/index.php" class="nav-link">Dashboard</a></li>
                     <li class="nav-item"><a  type="Button" href="login.php" class="nav-link btn btn-primary">Iniciar Sesion</a></li>
                 </ul>
             </div>
@@ -110,9 +109,9 @@
                                                         <option disabled selected >Lugar de Origen</option>
                                                         <?php
                                                             $query = $mysqli -> query ("SELECT * FROM origen");
-                                                            while ($valorOrigen = mysqli_fetch_array($query)) {
+                                                            while ($valorOrigen = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
                                                         ?>
-                                                                <option value="<?php echo $valorOrigen['nombreOrigen'] ?>" > <?php echo $valorOrigen['nombreOrigen'] ?> </option>
+                                                                <option value="<?php echo $valorOrigen['codigoOrigen'] ?>" > <?php echo $valorOrigen['nombreOrigen'] ?> </option>
                                                         <?php
                                                             }
                                                         ?>
@@ -131,9 +130,9 @@
                                                         <option disabled selected >Lugar de Destino</option>
                                                         <?php
                                                             $query = $mysqli -> query ("SELECT * FROM destino");
-                                                            while ($valorDestino = mysqli_fetch_array($query)) {
+                                                            while ($valorDestino = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
                                                         ?>
-                                                                <option value="<?php echo $valorDestino['nombreDestino'] ?>" > <?php echo $valorDestino['nombreDestino'] ?> </option>
+                                                                <option value="<?php echo $valorDestino['codigoDestino'] ?>" > <?php echo $valorDestino['nombreDestino'] ?> </option>
                                                         <?php
                                                             }
                                                         ?>
@@ -260,7 +259,7 @@
                                                         <option disabled selected>Lugar de Destino</option>
                                                         <?php
                                                             $query = $mysqli -> query ("SELECT * FROM destino");
-                                                            while ($valores = mysqli_fetch_array($query)) {
+                                                            while ($valores = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
                                                                 echo '<option value="'.$valores[id].'">'.$valores[nombreDestino].'</option>';
                                                             }
                                                         ?>

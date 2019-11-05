@@ -1,3 +1,17 @@
+<?php 
+
+    include("codigo.php");
+    include("verificar.php");
+
+    if (!isset($_SESSION['rol'])) {
+      header('Location: login.php');
+    }
+    else {
+      if ($_SESSION['rol'] != 2) {
+        header('Location: login.php');
+      }
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -34,7 +48,6 @@
 </head>
 
 <body>
-    <?php include("verificar.php"); ?>
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
@@ -46,13 +59,36 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="#" class="nav-link text-dark"><?php  echo "$nombreUser";?></a></li>
-                    <li class="nav-item active"><a href="cerrar.php" class="nav-link">Cerrar Sesion</a></li>
+                    <li class="nav-item active"><a href="#" class="nav-link text-white"><b><?php  echo "$nombreUser";?></b></a></li>
+                    <li class="nav-item active">
+                    <a class="nav-link text-danger" href="#" data-toggle="modal" data-target="#logoutModal">
+                        Cerrar sesión
+                    </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- END nav -->
+
+     <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Preparado para irte?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="cerrar.php">Cerrar sesión</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
       <div class="overlay"></div>

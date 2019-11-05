@@ -1,6 +1,16 @@
 <?php
     include("codigo.php");
-    include("conexion.php");
+    //include("sesion.php");
+    include("verificar.php");
+
+    if (!isset($_SESSION['rol'])) {
+      header('Location: login.php');
+    }
+    else {
+      if ($_SESSION['rol'] != 2) {
+        header('Location: login.php');
+      }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -44,6 +54,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.php">Sun Side 🌞</a>
+            <a href="#" class="nav-link text-white" data-toggle="modal" data-target="#logoutModal"><b><?php  echo "$nombreUser";?></b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
@@ -51,6 +62,25 @@
         </div>
     </nav>
     <!-- END nav -->
+
+    <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Preparado para irte?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="cerrar.php">Cerrar sesión</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
         <div class="overlay"></div>
@@ -66,12 +96,6 @@
     </div>
 
     <div class="container p-4">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registro del Viaje</li>
-            </ol>
-        </nav>
         <div class="row bg-white">
             <!-- Registrar Datos del Viaje -->
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -81,9 +105,10 @@
                         <h2>Datos del Viaje ✈</h2>
                         <hr>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group">
                                 <label class="font-weight-bold">El costo del viaje es: </label>
-                                <input type="button" name="codigoViaje" class="text-success btn btn-lg bg-white font-weight-bold" value="<?php echo "$", mt_rand(250,2500); ?> "> 
+                                <label class="font-weight-bold text-success">$</label>
+                                <input type="text" name="costoV" class="text-success btn btn-lg bg-white font-weight-bold text-left" value="<?php echo  mt_rand(250,2500); ?> "> 
                             </div>
                             <div class="form-group col-md-6">
                                 <input type="hidden" name="codigoViaje" class="text-danger btn btn-lg bg-white font-weight-bold"  value="<?php echo rand(100,10000); ?> ">
@@ -95,37 +120,39 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Cantidad de asientos</label>
-                                <input type="text" class="form-control" disabled value="<?php  echo "$cant_asientos"; ?>">
+                                <input type="text" class="form-control" name="cantidadAsientos" value="<?php  echo "$cant_asientos"; ?>">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Fecha Salida</label>
-                                <input type="text" name="fecha" class="form-control checkin_date" value="<?php  echo "$fechaSalida_index"; ?>">
+                                <input type="text" name="fechaSalida" class="form-control checkin_date" value="<?php  echo "$fechaSalida_index"; ?>">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Fecha Regreso</label>
-                                <input type="text" name="fecha" class="form-control checkin_date"value="<?php  echo "$fechaRegreso_index"; ?>">
+                                <input type="text" name="fechaRegreso" class="form-control checkin_date"value="<?php  echo "$fechaRegreso_index"; ?>">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Lugar Origen </label>
-                                <input type="text" class="form-control" disabled value="<?php  echo "$lugarOrigen"; ?>">
+                                <input type="text" class="form-control" value="<?php  echo "$lugarOri"; ?>">   
+                                <input type="hidden" class="form-control" name="lugaOrigen" value="<?php  echo "$lugarOrigen"; ?> ">                             
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Lugar Destino</label>
-                                <input type="text" class="form-control" disabled value="<?php  echo "$lugarDestino"; ?>">
+                                <input type="text" class="form-control" value="<?php  echo "$lugarDesti"; ?> ">
+                                <input type="hidden" class="form-control" name="lugaDestino" value="<?php  echo "$lugarDestino"; ?> ">
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label>Otros datos del Origen</label>
+                                <label>Otros datos del Origen (Opcional)</label>
                                 <textarea name="datosOrigen" class="form-control" id="exampleFormControlTextarea1"
-                                    placeholder="Datos adicionales" rows="2" required></textarea>
+                                    placeholder="Datos adicionales" rows="2" ></textarea>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label>Otros datos del Destino</label>
-                                <textarea name="datosOrigen" class="form-control" id="exampleFormControlTextarea1"
-                                    placeholder="Datos adicionales" rows="2" required></textarea>
+                                <label>Otros datos del Destino (Opcional)</label>
+                                <textarea name="datosDestino" class="form-control" id="exampleFormControlTextarea1"
+                                    placeholder="Datos adicionales" rows="2" ></textarea>
                             </div>
                             <div class="custom-control custom-checkbox mb-3 ">
                                 <input type="checkbox" class="custom-control-input" id="customCheck1" required>
