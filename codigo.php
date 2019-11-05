@@ -176,7 +176,7 @@
         
 
          //  Recibo los datos del index para el registroViaje.php
-        if (isset($_POST['btn_index'])) {
+        if (isset($_POST["btn_index"])) {
                 
                 $fechaSalida_index = $_POST['fechaSalida'];
                 $fechaRegreso_index = $_POST['fechaRegreso'];
@@ -184,16 +184,15 @@
                 $lugarDestino = $_POST['destino'];
                 $cant_asientos = $_POST['cant_asientos'];
 
-
                 //Mostrar el nombre del origen en registroViaje
                 $sql = "SELECT * FROM origen where codigoOrigen ='$lugarOrigen' ";
                 $consulta =  mysqli_query($conn, $sql);
                 $fila = mysqli_num_rows($consulta);
 
                 //Devuelve a la pagina 
-                // if ($sql) {
-                //         header('Location: login.php');
-                //        } 
+                //  if ($sql) {
+                //          header('Location: login.php');
+                //         } 
 
                 if ($fila) {
                         while ($registro = mysqli_fetch_assoc($consulta)) {
@@ -211,9 +210,15 @@
                                 $lugarDesti=$registro["nombreDestino"];
                         }
                 }
+        }else {
+                $fechaSalida_index = "";
+                $fechaRegreso_index = "";
+                $cant_asientos = "";
+                $lugarDesti = "";
+                $lugarOri= "";
         }        
-         
-         
+
+                
         //  RegistroViajes
         if (isset($_POST['add_btn'])) {
 
@@ -230,36 +235,35 @@
  
                 //Datos del Origen   
                 $lugaOrigen = $_POST['lugaOrigen'];
-                $ced = "5-63-507";
+                //$ced = $_SESSION["id_cedulaUser"];
 
                 //Insertar datos en la tabla viaje
-                $sql = "INSERT INTO viajes (codigoViaje, numAsientos, costoViaje, fechaSalida,fechaRegreso, horaViaje, cedula_Viajero,codigo_Origen, codigo_Destino)
-                values('$codigoViaje','$cantidadAsientos','$costoV','$fechaSalida','$fechaRegreso','$horaV','$ced','$lugaOrigen','$lugaDestino')";
+                $sql = "INSERT INTO viajes (codigoViaje, numAsientos, costoViaje, fechaSalida,fechaRegreso, horaViaje, codigo_Origen, codigo_Destino)
+                values('$codigoViaje','$cantidadAsientos','$costoV','$fechaSalida','$fechaRegreso','$horaV','$lugaOrigen','$lugaDestino')";
                 $consulta =  mysqli_query($conn, $sql);
 
-                //Devuelve a la pagina 
+                //Insertar datos en la tabla usuario
+                //$sql = "INSERT INTO usuarios (codViaje)
+                //values('$codigoViaje')";
+                //$consulta =  mysqli_query($conn, $sql);
+
                 if ($sql) {
+                        $sql = "SELECT * FROM viajes where codigoViaje ='$codigoViaje' ";
+                        $consulta =  mysqli_query($conn, $sql);
+                        $fila = mysqli_num_rows($consulta);
+
+                        if ($fila) {
+                                while ($registro = mysqli_fetch_assoc($consulta)) {
+                                        $codViaje = $registro["codigoViaje"];
+                                }
+                        }
+                }else if ($sql) {
                  header('Location: checkout.php');
                 }      
  
-        }  
+        } 
 
-
-
-                //Mostrar el costo del viaje
-                
-                // $cost = $_POST['cost'];
-                // $sql = "SELECT * FROM viajes where costoViaje ='$cost' ";
-                // $consulta =  mysqli_query($conn, $sql);
-                // $fila = mysqli_num_rows($consulta);
-
-                // if ($fila) {
-                //         while ($registro = mysqli_fetch_assoc($consulta)) {
-                //                 $xxx=$registro["costoViaje"];
-                //                 $codViaje = $registro["codigoViaje"];
-                //         }
-                // }
-                
+                    
                 
                 
         

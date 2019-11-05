@@ -70,9 +70,6 @@
                 <div class="col-md-6 login-form-1 bg-white">
                     <h3 class="pt-2">Iniciar Sesión</h3>
                     <form action="sesion.php" method="POST" form-signin>
-                    <?php
-                      
-                    ?>
                     <div class="form-label-group">
                       <label for="inputEmail">Nombre de Usuario</label>
                       <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Nombre de usuario" required autofocus>
@@ -97,9 +94,6 @@
                     <h3 class="text-white pt-2">Registrate</h3>
                     
                     <form action="sesion.php" method="POST" form-signin class="text-white">
-                      <?Php 
-                          
-                      ?>
                         <div class="row">
                           <div class="form-group col-md-6">
                               <label>Nombre</label>
@@ -118,7 +112,12 @@
                             <label for="inputPassword">Contraseña</label>
                             <input type="password" id="inputPassword" name="pass" class="form-control" placeholder="Contraseña" required> 
                         </div> 
+                        <div class="custom-control custom-checkbox mb-3 ">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1s" required>
+                            <label class="custom-control-label" for="customCheck1s">Acepta Términos y Condiciones</label>
+                        </div>
                         <input type="hidden" name="rol_Usuario" value="2">
+                        <input type="hidden" name="codViajero" value="<?php include('codigo.php'); echo $codViaje; ?>">
                         <div class="form-group">
                           <button name="addlogin" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Registrarse</button>
                         </div>

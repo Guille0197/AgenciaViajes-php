@@ -2,14 +2,14 @@
     include("codigo.php");
     include("verificar.php");
 
-    if (!isset($_SESSION['rol'])) {
-      header('Location: login.php');
-    }
-    else {
-      if ($_SESSION['rol'] != 2) {
-        header('Location: login.php');
-      }
-    }
+    // if (!isset($_SESSION['rol'])) {
+    //   header('Location: login.php');
+    // }
+    // else {
+    //   if ($_SESSION['rol'] != 2) {
+    //     header('Location: login.php');
+    //   }
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -113,14 +113,33 @@
                             <h6 class="my-0">Precio</h6>
                             <small class="text-muted">El precio del boleto de su viaje</small>
                         </div>
-                        <span class="text-muted">$ <?php #echo "$costoViajar"; ?></span> 
+                        <?php
+                            $sql = "SELECT * FROM viajes where codigoViaje ='$cod_v' ";
+                            $consulta =  mysqli_query($conn, $sql);
+                            $fila = mysqli_num_rows($consulta);
+    
+                            if ($fila) {
+                                    while ($registro = mysqli_fetch_assoc($consulta)) {
+                                            $costoViajar = $registro["costoViaje"];
+                                    }?>
+                                        <span class="text-muted">$ <?php echo "$costoViajar"; ?></span> 
+                                    <?php
+                            }
+                        ?>
                     </li>
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h6 class="my-0">Seguro de Vaijero / Maletas</h6>
+                            <h6 class="my-0">Seguro de Viajero / Equipaje</h6>
                             <small class="text-muted">Viaje protegido contra robo y pérdidas</small>
                         </div>
                         <span class="text-muted">$50</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between bg-light lh-condensed">
+                        <div>
+                            <h6 class="my-0">Impuestos</h6>
+                            <small class="text-muted">Impuestos (aproximado) + Recargos de combustible</small>
+                        </div>
+                        <span class="text-muted">8%</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between bg-light">
                         <div class="text-success">
@@ -131,13 +150,20 @@
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total (USD)</span>
-                        <strong>$2092</strong>
+                        <?php
+                            $valor = $costoViajar + 50; 
+                            $imp = $valor * 0.08;
+                            $costo = $valor + $imp;
+                            $desc =$costo * 0.05;
+                            $total = $costo - $desc;
+                        ?>
+                        <strong class="text-danger">$ <?php echo "$total"; ?></strong>
                     </li>
                 </ul>
             </div>
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3">Información del viajero</h4>
-                <form action="codigo.php">
+                <form action="codigo.php" method="Get">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName">Nombre Completo</label>
@@ -189,16 +215,16 @@
 
                     <div class="d-block my-3">
                         <div class="custom-control custom-radio">
-                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked
+                            <input id="credit" name="" type="radio" class="custom-control-input" checked
                                 required>
                             <label class="custom-control-label" for="credit">Tarjeta de crédito</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" >
+                            <input id="debit" name="" type="radio" class="custom-control-input" >
                             <label class="custom-control-label" for="debit">Tarjeta de débito</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" >
+                            <input id="paypal" name="" type="radio" class="custom-control-input" >
                             <label class="custom-control-label" for="paypal">PayPal</label>
                         </div>
                     </div>
@@ -225,11 +251,11 @@
                     </div>
                     <hr class="mb-4">
                     <div class="custom-control custom-checkbox mb-3 ">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1" required>
-                                <label class="custom-control-label" for="customCheck1">Acepta Términos y Condiciones</label>
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" required>
+                        <label class="custom-control-label" for="customCheck1">Acepta Términos y Condiciones</label>
                     </div>
                     <div class="p-4">
-                        <button class="btn btn-success btn-lg btn-block p-4" type="submit">Continuar</button>
+                        <button class="btn btn-success btn-lg btn-block p-4" type="submit">Procesar Pago 💰</button>
                     </div>
                 </form>
             </div>

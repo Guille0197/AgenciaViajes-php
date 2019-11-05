@@ -1,5 +1,6 @@
 <?php
   $mysqli = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
+  session_start();
 ?>
 
 <!DOCTYPE html>

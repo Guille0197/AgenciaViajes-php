@@ -1,16 +1,15 @@
 <?php
     include("codigo.php");
-    //include("sesion.php");
-    include("verificar.php");
+    //include("verificar.php");
 
-    if (!isset($_SESSION['rol'])) {
-      header('Location: login.php');
-    }
-    else {
-      if ($_SESSION['rol'] != 2) {
-        header('Location: login.php');
-      }
-    }
+    // if (!isset($_SESSION['rol'])) {
+    //   header('Location: login.php');
+    // }
+    // else {
+    //   if ($_SESSION['rol'] != 2) {
+    //     header('Location: login.php');
+    //   }
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -54,7 +53,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.php">Sun Side 🌞</a>
-            <a href="#" class="nav-link text-white" data-toggle="modal" data-target="#logoutModal"><b><?php  echo "$nombreUser";?></b></a>
+            <!-- <a href="#" class="nav-link text-white" data-toggle="modal" data-target="#logoutModal"><b><?php  #echo "$nombreUser";?></b></a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
@@ -100,8 +99,11 @@
             <!-- Registrar Datos del Viaje -->
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="p-4">
+                <?php
+                            
+                        ?>
                     <!-- Formulario -->
-                    <form action="codigo.php" method="POST">
+                    <form action="login.php" method="POST">
                         <h2>Datos del Viaje ✈</h2>
                         <hr>
                         <div class="form-row">
