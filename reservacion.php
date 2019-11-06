@@ -90,7 +90,7 @@
       <div class="container">
         <div class="row no-gutters slider-text  align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Informe viajes</h1>
+            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Reservación</h1>
           </div>
         </div>
       </div>
@@ -102,8 +102,8 @@
                 <div class=" nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="  nav-link" id="v-pills-home-tab"  href="registro.php" role="tab" aria-controls="v-pills-home" aria-selected="true"><strong>Registrar Datos 📌</strong></a>
                     <a class=" nav-link" id="v-pills-messages-tab" href="perfilUser.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Perfil 😎</strong></a>
-                    <a class=" nav-link"  href="reservacion.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Reservación 🧳</strong></a>
-                    <a class="  nav-link active"  href="informe.php" role="tab" aria-controls="v-pills-settings" aria-selected="false"><strong>Informes 📊</strong></a>
+                    <a class=" nav-link active"  href="#" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Reservación 🧳</strong></a>
+                    <a class="  nav-link"  href="informe.php" role="tab" aria-controls="v-pills-settings" aria-selected="false"><strong>Informes 📊</strong></a>
                 </div>
             </div>
             <div class="col-9">
@@ -114,78 +114,76 @@
                         aria-labelledby="v-pills-home-tab ">
 
                         <div class="p-4">
-                            <h2>Informe de sus viajes ✈</h2> <hr> 
-                            <!-- Tabla -->
-                            <?php
-                             include("conexion.php");
-                                $sql = "SELECT * FROM  viajes where codigoViaje = '$cod_v'";
-                                $consulta =  mysqli_query($conn, $sql);
-
-                                echo "<table class=table-bordered>";
-                                    echo"<thead class=bg-dark>";
-                                        echo "<tr class=text-white>";
-                                            echo "<td class=p-1 align=center> Código Viaje</td>";
-                                            echo "<td align=center> Cantidad Asientos </td>";
-                                            echo "<td class=p-1 align=center> Costo </td>";
-                                            echo "<td class=p-1 align=center> Fecha Salida</td>";
-                                            echo "<td class=p-1 align=center> Fecha Regreso</td>";
-                                            echo "<td class=p-1 align=center> Hora Viaje</td>";
-                                            echo "<td class=p-1 align=center> Cédula Viajero </td>";
-                                            echo "<td class=p-1 align=center> Código Origen </td>";
-                                            echo "<td class=p-1 align=center> Código Destino </td>";
-                                        echo "</tr>";
-                                    echo"</thead>";
-
-                                            $linea = mysqli_num_rows($consulta);
-
-                                if ($linea) {  
-
-                                    while ($registro = mysqli_fetch_assoc($consulta)) {
-                                        echo"<tr>";
-                                            $codigox = $registro["codigoViaje"];
-                                            echo"<td>";
-                                                echo $codigox;
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['numAsientos'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo "$ ".$registro['costoViaje'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['fechaSalida'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['fechaRegreso'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['horaViaje'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                #echo $registro['cedulaViajero'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['codigo_Origen'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['codigo_Destino'];
-                                            echo"</td>";
-
-                                        echo"</tr>";
-                                    }
-                                }
-                                echo "</table>";
-                            ?>
-                            <!-- fin TABLA -->
+                            <!--Reservacion  -->
+                            <h2>Reservación 🧳</h2> <hr>
+                                     <form action="codigo.php" method="post">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-5">
+                                                <label>Código de reservación:</label>
+                                                <input type="text" name="codigoReservacion"
+                                                class="text-success btn btn-lg bg-white font-weight-bold text-left"
+                                                value="<?php echo  mt_rand(250,3000); ?> ">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Fecha de la Reservación</label>
+                                                <input type="text" name="fechaReservacion" class="form-control checkin_date" value=" ">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label>Estado de la Reservación</label> <br>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"  checked id="inlineRadio1" value="activa">
+                                                    <label class="form-check-label" for="inlineRadio1">Activa</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="cancelada">
+                                                    <label class="form-check-label" for="inlineRadio2">Cancelada</label>
+                                                </div>                                        
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="ced_Usuario" value="<?php echo $IDUser ?>">
+                                        <!-- Boton de enviar los datos -->
+                                        <button type="submit" name="btn_add_reservacion" class="btn btn-block btn-success py-3 px-5 "><strong>Registar Reservación</strong></button>
+                                     </form>
                         </div>  
+                        <div class="p-4">
+                        <h2>Informe de la Reservación 🏢</h2> <hr> 
+                            <!-- Tabla de reservacion  -->
+                            <div class="container">
+                            <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                    <th scope="col">codigo Reservación</th>
+                                    <th scope="col">Fecha de Reservación</th>
+                                    <th scope="col">Estado de la Reservación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?Php
+                                        $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
+
+                                        $sql = "SELECT * FROM  reservacion where cedula_viajero ='$IDUser' ";
+                                        $consulta =  mysqli_query($conn, $sql);
+                                        $fila = mysqli_num_rows($consulta);
+                
+                                        if ($fila) {
+                                                while ($registro = mysqli_fetch_assoc($consulta)) {
+                                                        $codigoReservacion = $registro["codigoReservacion"];
+                                                        $fechaReservacion = $registro["fechaReservacion"];
+                                                        $estadoReservacion = $registro["estadoReservacion"];
+                                                        ?>
+                                                        <tr>
+                                                            <td><?php echo $codigoReservacion;?></td>
+                                                            <td><?php echo $fechaReservacion;?></td>
+                                                            <td><?php echo $estadoReservacion;?></td>
+                                                        </tr>
+                                                <?php
+                                                }
+                                        }
+                                    ?>
+                                </tbody>
+                                </table>
+                            </div>
+                            </div>
                     </div> <!--Fin de la ventana principal -->
                 </div>
             </div>

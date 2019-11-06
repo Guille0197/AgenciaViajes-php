@@ -99,18 +99,15 @@
             <!-- Registrar Datos del Viaje -->
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="p-4">
-                <?php
-                            
-                        ?>
                     <!-- Formulario -->
-                    <form action="login.php" method="POST">
+                    <form action="registroUser.php" method="POST">
                         <h2>Datos del Viaje ✈</h2>
                         <hr>
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="font-weight-bold">El costo del viaje es: </label>
                                 <label class="font-weight-bold text-success">$</label>
-                                <input type="text" name="costoV" class="text-success btn btn-lg bg-white font-weight-bold text-left" value="<?php echo  mt_rand(250,2500); ?> "> 
+                                <input type="text" name="costoV" class="text-success btn btn-lg bg-white font-weight-bold text-left" value="<?php echo  mt_rand(250,3000); ?> "> 
                             </div>
                             <div class="form-group col-md-6">
                                 <input type="hidden" name="codigoViaje" class="text-danger btn btn-lg bg-white font-weight-bold"  value="<?php echo rand(100,10000); ?> ">

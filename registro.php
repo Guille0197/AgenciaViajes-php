@@ -1,5 +1,5 @@
 <?php 
-
+    $mysqli = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
     include("codigo.php");
     include("verificar.php");
 
@@ -44,7 +44,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> 
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -59,11 +59,12 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="#" class="nav-link text-white"><b><?php  echo "$nombreUser";?></b></a></li>
+                    <li class="nav-item active"><a href="perfilUser.php"
+                            class="nav-link text-dark"><b><?php  echo "$nombreUser";?></b></a></li>
                     <li class="nav-item active">
-                    <a class="nav-link text-danger" href="#" data-toggle="modal" data-target="#logoutModal">
-                        Cerrar sesión
-                    </a>
+                        <a class="nav-link text-danger" href="#" data-toggle="modal" data-target="#logoutModal">
+                            Cerrar sesión
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -71,165 +72,162 @@
     </nav>
     <!-- END nav -->
 
-     <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">¿Preparado para irte?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¿Preparado para irte?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión
+                    actual.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="cerrar.php">Cerrar sesión</a>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="cerrar.php">Cerrar sesión</a>
-        </div>
-      </div>
     </div>
-  </div>
 
     <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text  align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Registrar Datos</h1>
-          </div>
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text  align-items-center justify-content-center"
+                data-scrollax-parent="true">
+                <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                    <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                        Datos del Viaje</h1>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <div class="container bg-light p-4">
+    <div class="container m-0 ">
         <div class="row">
-            <div class="col-3">
-                <div class="text-dark nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class=" text-dark nav-link active" href="registro.php" role="tab" aria-controls="v-pills-home" aria-selected="true"><strong>Registrar Datos 📌</strong></a>
-                    <a class="text-dark nav-link"  href="consultar.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Consultar Viajero 👨🏽‍</strong></a>
-                    <a class=" text-dark nav-link" href="informe.php" role="tab" aria-controls="v-pills-settings" aria-selected="false"><strong>Mostrar Informe 📊</strong></a>
+            <div class="col-3 bg-dark">
+                <div class="nav flex-column nav-pills p-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="  nav-link active " href="registro.php" role="tab" aria-controls="v-pills-home"
+                        aria-selected="true"><strong>Registrar Datos 📌</strong></a>
+                    <a class=" nav-link" href="perfilUser.php" role="tab" aria-controls="v-pills-messages"
+                        aria-selected="false"><strong>Perfil 😎</strong></a>
+                        <a class=" nav-link"  href="reservacion.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Reservación 🧳</strong></a>
+                    <a class="  nav-link" href="informe.php" role="tab" aria-controls="v-pills-settings"
+                        aria-selected="false"><strong>Informe 📊</strong></a>
                 </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
 
                     <!-- Registrar Datos del Viajero -->
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    <div class="tab-pane fade show active container" id="v-pills-home" role="tabpanel"
                         aria-labelledby="v-pills-home-tab">
 
                         <div class="p-4">
-                            <h2>Datos del Viajero 👨🏽‍</h2> <hr> 
+                            <h2>Ingrese los datos de su nuevo viaje ✈ 🛂</h2>
+                            <hr>
+                            
                             <!-- Formulario -->
                             <form action="codigo.php" method="POST">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label>Cédula</label>
-                                        <input type="text"  name="cedula" class="form-control"  placeholder="Cédula">
+                                
+                                <div class="form-row">                                    
+                                    <div class="form-group">
+                                        <input type="text" name="precio_viaje"
+                                            class="text-success btn btn-lg bg-white font-weight-bold text-left"
+                                            value="<?php echo  mt_rand(250,3000); ?> ">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <input type="hidden" name="codigo_viaje"
+                                            class="text-danger btn btn-lg bg-white font-weight-bold"
+                                            value="<?php echo rand(100,10000); ?> ">
+                                    </div>
+                                    <div class="form-group col-md-6 ">
+                                        <label>Hora de salida</label>
+                                        <input type="text" name="hora_viaje" class="form-control" id="timepicker"
+                                            placeholder="Seleccione Hora" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label>Nombre</label>
-                                        <input type="text" name="nombre" class="form-control" placeholder="Nombre completo">
+                                        <label>Cantidad de asientos</label>
+                                        <select name="canti_asientos" id="" class="form-control" required>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Fecha Salida</label>
+                                        <input type="text" name="fecha_salida" class="form-control checkin_date" placeholder="Seleccione la fecha" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Fecha Regreso</label>
+                                        <input type="text" name="fecha_regreso" class="form-control checkin_date" placeholder="Seleccione la fecha" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        <label>Dirección</label>
-                                        <input type="text" name="direccion" class="form-control"  placeholder=" Calle 1234 Main St">
+                                        <label>Lugar Origen </label>
+                                        <select name="nombre_origen"  class="form-control">
+                                            <option disabled selected >Lugar de Origen</option>
+                                            <?php
+                                                $query = $mysqli -> query ("SELECT * FROM origen");
+                                                while ($valorOrigen = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+                                            ?>
+                                                    <option value="<?php echo $valorOrigen['codigoOrigen'] ?>" > <?php echo $valorOrigen['nombreOrigen'] ?> </option>
+                                            <?php
+                                                }
+                                            ?>
+                                        </select>
                                     </div>
+
                                     <div class="form-group col-md-6">
-                                        <label for="inputCity">Teléfono</label>
-                                         <input type="phone" name="telfono" class="form-control"  placeholder="+507 293-4567">
+                                        <label>Lugar Destino</label>
+                                        <select name="nombre_destino" class="form-control">
+                                            <option disabled selected >Lugar de Destino</option>
+                                            <?php
+                                                $query = $mysqli -> query ("SELECT * FROM destino");
+                                                while ($valorDestino = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+                                            ?>
+                                                    <option value="<?php echo $valorDestino['codigoDestino'] ?>" > <?php echo $valorDestino['nombreDestino'] ?> </option>
+                                            <?php
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Otros datos del Origen (Opcional)</label>
+                                        <textarea name="datosOrigen" class="form-control"
+                                            id="exampleFormControlTextarea1" placeholder="Datos adicionales"
+                                            rows="2"></textarea>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Otros datos del Destino (Opcional)</label>
+                                        <textarea name="datosDestino" class="form-control"
+                                            id="exampleFormControlTextarea1" placeholder="Datos adicionales"
+                                            rows="2"></textarea>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3 ">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" required>
+                                        <label class="custom-control-label" for="customCheck1">Acepta Términos y
+                                            Condiciones</label>
                                     </div>
                                 </div>
-
-                                <h2>Datos del Viaje ✈</h2> <hr>
-                                <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Código de viaje</label>
-                                            <input type="text" name="codViaje" class="form-control" placeholder="Código de viaje">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Número de asientos</label>
-                                            <input type="number" name="numAsientos" class="form-control" value="1" max="100" min="1">
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label>Costo del viaje</label>
-                                            <input type="number" name="costo" step="0.001" class="form-control"  placeholder="Dinero">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Fecha</label>
-                                            <input type="text" name="fecha" class="form-control checkin_date" placeholder="Fecha">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Hora</label>
-                                            <input type="text" name="hora" class="form-control" id="timepicker" placeholder="Hora"/>
-                                        </div>
-                                    </div>
-
-                                <h2>Datos del Lugar 🌎</h2> <hr>
-                                <h3>Origen</h3>
-                                <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Código </label>
-                                            <input type="number" name="codOrigen" class="form-control" placeholder="Código de origen">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Nombre del lugar</label>
-                                            <input type="text" name="nombreOrigen" class="form-control" placeholder="Nombre del lugar de origen">
-                                        </div>
-
-                                        <div class="form-group col-md-12">
-                                            <label>Otros datos</label>
-                                            <textarea name="datosOrigen" class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
-                                        </div>
-                                    </div>
-
-                                <h3>Destino</h3>
-                                <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Código </label>
-                                            <input type="number" name="codDestino" class="form-control" placeholder="Código de destino">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Nombre del lugar</label>
-                                            <input type="text" name="nombreDestino" class="form-control" placeholder="Nombre del lugar de destino">
-                                        </div>
-
-                                        <div class="form-group col-md-12">
-                                            <label>Otros datos</label>
-                                            <textarea name="datosDestino" class="form-control" id="exampleFormControlTextarea1" placeholder="Datos adicionales" rows="2"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <!--Reservacion  -->
-                                    <h2>Reservación 🧳</h2> <hr>
-                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Código de reservación</label>
-                                            <input type="text" name="codReservacion" class="form-control" placeholder="Código de Reservación">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Fecha</label>
-                                            <input type="text" name="fechaReservacion" class="form-control checkin_date" placeholder="Fecha">
-                                        </div>
-                                       <div class="p-4">
-                                       <label>Estado de la Reservación</label> <br>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadioInline1" checked name="estado" class="custom-control-input" value="Activa">
-                                                <label class="custom-control-label" for="customRadioInline1">Activa</label>
-                                            </div>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadioInline2" name="estado" class="custom-control-input" value="Cancelada">
-                                                <label class="custom-control-label" for="customRadioInline2">Cancelada</label>
-                                            </div>
-                                       </div>
-                                    </div>
                                 <!-- Boton de enviar los datos -->
-                                <button type="submit" name="addInfo_btn" class="btn btn-block btn-success py-3 px-5 " onclick="alertSave()"> <strong>Enviar Datos</strong></button>
+                                <button type="submit" name="add_registro_viaje" class="btn btn-block btn-success py-3 px-5  ">
+                                    <strong>Siguiente ➡</strong></button>
                             </form>
                             <!-- fin formulario -->
-                        </div>  
-                    </div> <!--Fin de la ventana principal -->
+                        </div>
+                    </div>
+                    <!--Fin de la ventana principal -->
                 </div>
             </div>
         </div>
@@ -245,7 +243,8 @@
                         <script>
                         document.write(new Date().getFullYear());
                         </script> All rights reserved Sun Side🌞 | The Project made <i class="icon-heart"
-                            aria-hidden="true"></i> by <a href="https://github.com/Guille0197/AgenciaViajes-php" target="_blank">Guillermo Navarro</a>
+                            aria-hidden="true"></i> by <a href="https://github.com/Guille0197/AgenciaViajes-php"
+                            target="_blank">Guillermo Navarro</a>
                     </p>
                 </div>
             </div>
@@ -262,17 +261,17 @@
 
     <!-- DatePicker Time -->
     <script>
-        $('#timepicker').timepicker({
-            uiLibrary: 'bootstrap4'
-        });
+    $('#timepicker').timepicker({
+        uiLibrary: 'bootstrap4'
+    });
     </script>
 
     <!-- Alert -->
     <script>
-        function alertSave() {
+    function alertSave() {
         alert("¡Los Datos se han guardado satisfactoriamente 👍🏽!");
-        }
-</script>
+    }
+    </script>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>

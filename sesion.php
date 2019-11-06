@@ -1,11 +1,12 @@
 <?php 
   include_once 'conexion.php';
+  include_once 'codigo.php';
 
   if(!isset($_SESSION)) {
     session_start();
   }
 
-  //formulario de Registrarse
+  //formulario de Registro
   if (isset($_POST['addlogin'])) {
     $nombreUsuario = $_POST['nombreUsuario'];
     $cedula = $_POST['cedula'];
@@ -19,6 +20,27 @@
     values('$cedula','$nombreUsuario','$contraseña','$nombreUser','$codigoViajero','$rol_Usuario')";
     $consulta =  mysqli_query($conn, $sql);
   }
+
+  //Envia del checkout a registro
+    if (isset($_POST['btn_checkout'])) {  
+      $precioTotal = $_POST["precioTotal"];
+      $codX = $_POST["codX"];
+      $telf = $_POST["telf"];
+      $address = $_POST["address"];
+      $username = $_POST["usernamex"];
+
+  //Insertar datos en la tabla viajes el costo total 
+    $sql = "UPDATE viajes SET costoViaje = '$precioTotal' WHERE codigoViaje = '$codX' ";
+    $consulta =  mysqli_query($conn, $sql);
+
+    //Insertar datos en la tabla usuarios (Direccion, telefono)
+    $sql = "UPDATE usuarios SET  direccion='$address', telefono='$telf' WHERE username = '$username' ";
+    $consulta =  mysqli_query($conn, $sql);
+
+      if ($sql) {
+              header('Location: informe.php');
+      }
+    }
 
   //Inicia Sesion del usuario registrado
   if (isset($_POST['addlogin'])) {
@@ -39,6 +61,12 @@
       $_SESSION["id_cedulaUser"] = $registro["cedulaUser"];
       $_SESSION["id_codViaje"] = $registro["codViaje"];
 
+      $_SESSION["id_direccion"] = $registro["direccion"];
+      $_SESSION["id_telefono"] = $registro["telefono"];
+      $_SESSION["id_pass"] = $registro["passwor"];
+      $_SESSION["id"] = $registro["id"];
+
+
       if($_SESSION['rol'] == 2){
           header('Location: checkout.php');
       }
@@ -46,7 +74,7 @@
         <script lenguage=javascript>
         alert("⚠ ¡ERROR! ⚠");
         window.location="login.php";
-      </script> 
+      </script>
         
    <?php 
       }
@@ -70,6 +98,10 @@
       $_SESSION["id_nombre"]=$registro["nombre"];
       $_SESSION["id_cedulaUser"]=$registro["cedulaUser"];
       $_SESSION["id_codViaje"] = $registro["codViaje"];
+      $_SESSION["id_direccion"] = $registro["direccion"];
+      $_SESSION["id_telefono"] = $registro["telefono"];
+      $_SESSION["id_pass"] = $registro["passwor"];
+      $_SESSION["id"] = $registro["id"];
 
       switch($_SESSION['rol']){
         case 1:
@@ -92,5 +124,7 @@
       }
     
   }
+
+
 
 ?>

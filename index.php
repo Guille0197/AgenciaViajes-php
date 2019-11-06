@@ -1050,7 +1050,7 @@
                         <h2 class="ftco-heading-2">Información</h2>
                         <ul class="list-unstyled">
                             <li><a href="#" class="py-2 d-block">Sobre nosotros</a></li>
-                            <li><a href="#" class="py-2 d-block">Consulta en línea</a></li>
+                            <li><a href="informe.php" class="py-2 d-block">Consulta en línea</a></li>
                             <li><a href="#" class="py-2 d-block">Condiciones de reserva</a></li>
                             <li><a href="#" class="py-2 d-block">Privacidad y politica</a></li>
                             <li><a href="#" class="py-2 d-block">Politica de reembolso</a></li>

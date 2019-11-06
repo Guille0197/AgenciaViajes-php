@@ -1,9 +1,3 @@
-<?php 
-    //include("codigo.php");
-    // include("conexion.php");
-    include("verificar.php");
-
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -41,6 +35,8 @@
 </head>
 
 <body>
+    <?php include("verificar.php"); ?>
+
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.php">Sun Side 🌞</a>
@@ -51,7 +47,7 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="perfilUser.php" class="nav-link text-dark"><b><?php  echo "$nombreUser";?></b></a>
+                <li class="nav-item active"><a href="perfilUser.php" class="nav-link text-dark"><b><?php  echo "$nombreUser";?></b></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link text-danger" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -90,101 +86,84 @@
       <div class="container">
         <div class="row no-gutters slider-text  align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Informe viajes</h1>
+            <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Perfil del Viajero</h1>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container m-0 ">
+    <div class="container m-0">
         <div class="row">
             <div class="col-3 bg-dark">
                 <div class=" nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="  nav-link" id="v-pills-home-tab"  href="registro.php" role="tab" aria-controls="v-pills-home" aria-selected="true"><strong>Registrar Datos 📌</strong></a>
-                    <a class=" nav-link" id="v-pills-messages-tab" href="perfilUser.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Perfil 😎</strong></a>
+                    <a class="  nav-link" href="registro.php" role="tab" aria-controls="v-pills-home" aria-selected="true"><strong>Registrar Datos 📌</strong></a>
+                    <a class=" nav-link active"  href="consultar.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Perfil 😎</strong></a>
                     <a class=" nav-link"  href="reservacion.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Reservación 🧳</strong></a>
-                    <a class="  nav-link active"  href="informe.php" role="tab" aria-controls="v-pills-settings" aria-selected="false"><strong>Informes 📊</strong></a>
+                    <a class="  nav-link" href="informe.php" role="tab" aria-controls="v-pills-settings" aria-selected="false"><strong>Informe 📊</strong></a>
                 </div>
             </div>
-            <div class="col-9">
-                <div class="tab-content" id="v-pills-tabContent container">
-
-                    <!-- Registrar Datos del Viajero -->
-                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                        aria-labelledby="v-pills-home-tab ">
-
+            <div class="col-9 p-2">
+                <div class="tab-content" id="v-pills-tabContent">
                         <div class="p-4">
-                            <h2>Informe de sus viajes ✈</h2> <hr> 
-                            <!-- Tabla -->
-                            <?php
-                             include("conexion.php");
-                                $sql = "SELECT * FROM  viajes where codigoViaje = '$cod_v'";
+                            <h2>Datos de <?php  echo "$nombreUser";?>📝</h2> <hr> 
+                            <!-- Mostrar los datos actualizados -->
+                            <?Php
+                            $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
+
+                                $sql = "SELECT * FROM usuarios where  id ='$idUsuario' ";
                                 $consulta =  mysqli_query($conn, $sql);
-
-                                echo "<table class=table-bordered>";
-                                    echo"<thead class=bg-dark>";
-                                        echo "<tr class=text-white>";
-                                            echo "<td class=p-1 align=center> Código Viaje</td>";
-                                            echo "<td align=center> Cantidad Asientos </td>";
-                                            echo "<td class=p-1 align=center> Costo </td>";
-                                            echo "<td class=p-1 align=center> Fecha Salida</td>";
-                                            echo "<td class=p-1 align=center> Fecha Regreso</td>";
-                                            echo "<td class=p-1 align=center> Hora Viaje</td>";
-                                            echo "<td class=p-1 align=center> Cédula Viajero </td>";
-                                            echo "<td class=p-1 align=center> Código Origen </td>";
-                                            echo "<td class=p-1 align=center> Código Destino </td>";
-                                        echo "</tr>";
-                                    echo"</thead>";
-
-                                            $linea = mysqli_num_rows($consulta);
-
-                                if ($linea) {  
-
-                                    while ($registro = mysqli_fetch_assoc($consulta)) {
-                                        echo"<tr>";
-                                            $codigox = $registro["codigoViaje"];
-                                            echo"<td>";
-                                                echo $codigox;
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['numAsientos'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo "$ ".$registro['costoViaje'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['fechaSalida'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['fechaRegreso'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['horaViaje'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                #echo $registro['cedulaViajero'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['codigo_Origen'];
-                                            echo"</td>";
-
-                                            echo"<td>";
-                                                echo $registro['codigo_Destino'];
-                                            echo"</td>";
-
-                                        echo"</tr>";
-                                    }
+                                $fila = mysqli_num_rows($consulta);
+        
+                                if ($fila) {
+                                        while ($registro = mysqli_fetch_assoc($consulta)) {
+                                                $username = $registro["username"];
+                                                $passw = $registro["passwor"];
+                                                $ceddu = $registro["cedulaUser"];
+                                                $nombreUser = $registro["nombre"];
+                                                $direcci = $registro["direccion"];
+                                                $telfo = $registro["telefono"];
+                                        }
                                 }
-                                echo "</table>";
                             ?>
-                            <!-- fin TABLA -->
+                            <!-- Formulario -->
+                            <form action="codigo.php" method="POST">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Cédula</label>
+                                        <input type="text"  name="cedulaU" class="form-control" value="<?php echo $ceddu ?>" >
+                                        <input type="hidden"  name="idxUsuario" class="form-control" value="<?php echo $idUsuario ?>" >
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Nombre</label>
+                                        <input type="text" name="nombreU" class="form-control" value="<?php echo $nombreUser ?>" >
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Dirección</label>
+                                        <input type="text" name="direccionU" class="form-control" value="<?php echo $direcci ?>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputCity">Teléfono</label>
+                                         <input type="phone" name="telefonoU" class="form-control" value="<?php echo $telfo ?>">
+                                    </div>
+                                </div>
+
+                                <h2>Datos de la Cuenta 🔒</h2> <hr>
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Nombre de Usuario</label>
+                                            <input type="text" name="usernombU" class="form-control" value="<?php echo $username ?>">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Contraseña</label>
+                                            <input type="text" name="contrase" class="form-control" value="<?php echo $passw ?>">
+                                        </div>
+                                    </div>
+                                    </div>
+                                <!-- Boton de enviar los datos -->
+                                 <button type="submit" name="btn_perfildata" class="btn btn-block btn-success p-3"> <strong>Actualizar Datos</strong></button>
+                            </form>
+                            <!-- fin formulario -->
                         </div>  
                     </div> <!--Fin de la ventana principal -->
                 </div>
@@ -193,7 +172,7 @@
     </div>
 
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section p-4" id="contact">
+    <footer class="ftco-footer ftco-bg-dark ftco-section  p-4" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">

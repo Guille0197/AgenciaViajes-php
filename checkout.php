@@ -155,19 +155,21 @@
                             $imp = $valor * 0.08;
                             $costo = $valor + $imp;
                             $desc =$costo * 0.05;
-                            $total = $costo - $desc;
+                            $totalViaje = $costo - $desc;
                         ?>
-                        <strong class="text-danger">$ <?php echo "$total"; ?></strong>
+                        <strong class="text-danger">$ <?php echo "$totalViaje"; ?></strong>
                     </li>
                 </ul>
             </div>
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3">Información del viajero</h4>
-                <form action="codigo.php" method="Get">
+                <form action="sesion.php" method="POST">
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName">Nombre Completo</label>
                             <input type="text" class="form-control" id="firstName" Disabled value="<?php echo "$nombreUser"; ?>">
+                            <input type="hidden" class="form-control" name="precioTotal" value="<?php echo "$totalViaje"; ?>">
+                            <input type="hidden" class="form-control" name="codX" value="<?php echo "$cod_v"; ?>">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="firstName">Número de cédula</label>
@@ -181,7 +183,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">@</span>
                             </div>
-                            <input type="text" class="form-control" id="username" Disabled value="<?php echo "$usernam"; ?>">
+                            <input type="text" class="form-control" name="usernamex" value="<?php echo "$usernam"; ?>">
                         </div>
                     </div>
 
@@ -189,15 +191,14 @@
                         <label for="email">Email <span class="text-muted">(Opcional)</span></label>
                         <input type="email" class="form-control" id="email" placeholder="correo@example.com">
                     </div>
-
                     <div class="mb-3">
                         <label for="tel">Teléfono</label>
-                        <input type="phone" class="form-control" id="tel" placeholder="+507 6699-4422" required>
+                        <input type="phone" class="form-control" name="telf" placeholder="507 6699-4422" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="address">Dirección</label>
-                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                        <input type="text" class="form-control" name="address" placeholder="1234 Main St" required>
                     </div>
                     <div class="row"></div>
                     <hr class="mb-4">
@@ -255,7 +256,7 @@
                         <label class="custom-control-label" for="customCheck1">Acepta Términos y Condiciones</label>
                     </div>
                     <div class="p-4">
-                        <button class="btn btn-success btn-lg btn-block p-4" type="submit">Procesar Pago 💰</button>
+                        <button name="btn_checkout" class="btn btn-success btn-lg btn-block p-4" type="submit">Procesar Pago 💰</button>
                     </div>
                 </form>
             </div>

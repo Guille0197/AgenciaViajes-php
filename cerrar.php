@@ -6,7 +6,7 @@
         session_unset();
 ?>
         <script>
-            alert("Sesión cerrada correctamente");
+            alert("⚠ ADVENTENCIA: Sesión Cerrada Correctamente ⚠");
             window.location="index.php";
         </script>
    
@@ -14,7 +14,7 @@
         }
     else{ ?>
     <script>
-         alert("ERROR: No ha iniciado sesión");
+         alert("⚠ ERROR: No ha iniciado sesión ⚠");
          window.location="login.php";
     </script>
     <?php   

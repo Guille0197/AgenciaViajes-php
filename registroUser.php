@@ -58,8 +58,7 @@
             <div class="row no-gutters slider-text  align-items-center justify-content-center"
                 data-scrollax-parent="true">
                 <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                    <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Iniciar
-                        Sessión</h1>
+                    <h1 class="mb-3 bread pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Registrar Usuario</h1>
                 </div>
             </div>
         </div>
@@ -70,23 +69,42 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Sun Side 🌞 | Iniciar Sesión</h5>
+                        <h5 class="card-title text-center">Sun Side 🌞 | Registrate</h5>
+                        <a class="card-title text-center text-danger bg-light" href="login.php"><b>¿Tienes cuenta? Inicia Sesión Aquí</b></a>
                         <form action=sesion.php method="POST" class="form-signin">
-                            <div class="form-label-group">
-                                <label for="inputEmail">Nombre de Usuario</label>
-                                <input type="text" id="inputEmail" name="username" class="form-control"
-                                    placeholder="Nombre de usuario" required autofocus>
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input type="text" name="nombr" id="nomb" class="form-control"
+                                        placeholder="Nombre completo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cédula</label>
+                                    <input type="text" name="cedula" class="form-control" placeholder="Número de cedula"
+                                        required>
+                                </div>
+                            <div class="form-group ">
+                                <label>Nombre de Usuario</label>
+                                <input type="text" name="nombreUsuario" id="nombreUsuari" class="form-control"
+                                    placeholder="Nombre de Usuario" required>
                             </div>
-                            <div class="form-label-group pt-2">
+                            <div class="form-group">
                                 <label for="inputPassword">Contraseña</label>
-                                <input type="password" id="inputPassword" name="password" class="form-control"
+                                <input type="password" id="inputPassword" name="pass" class="form-control"
                                     placeholder="Contraseña" required>
                             </div>
-                            <div class="form-label-group p-4">
-                                <a class="text-danger" href="registroUser.php"><b>¿No tienes cuenta?, Registarte aquí</b></a>
+                            <div class="custom-control custom-checkbox mb-3 ">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1s" required>
+                                <label class="custom-control-label" for="customCheck1s">Acepta Términos y
+                                    Condiciones</label>
                             </div>
-                            <button name="login" class="btn btn-lg btn-block btn-primary text-uppercase text-white"
-                                type="submit">Iniciar</button>
+                            <input type="hidden" name="rol_Usuario" value="2">
+                            <input type="hidden" name="codViajero"
+                                value="<?php include('codigo.php'); echo $codViaje; ?>">
+                            <div class="form-group">
+                                <button name="addlogin" class="btn btn-lg btn-primary btn-block text-uppercase"
+                                    type="submit">Registrarse</button>
+                            </div>
+                            </div>
                         </form>
                     </div>
                 </div>
