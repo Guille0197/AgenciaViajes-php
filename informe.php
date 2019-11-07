@@ -1,7 +1,7 @@
 <?php 
     //include("codigo.php");
-    // include("conexion.php");
     include("verificar.php");
+    include("conexion.php");
 
 ?>
 <!DOCTYPE html>
@@ -101,9 +101,9 @@
             <div class="col-3 bg-dark">
                 <div class=" nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="  nav-link" id="v-pills-home-tab"  href="registro.php" role="tab" aria-controls="v-pills-home" aria-selected="true"><strong>Registrar Datos 📌</strong></a>
-                    <a class=" nav-link" id="v-pills-messages-tab" href="perfilUser.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Perfil 😎</strong></a>
                     <a class=" nav-link"  href="reservacion.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Reservación 🧳</strong></a>
                     <a class="  nav-link active"  href="informe.php" role="tab" aria-controls="v-pills-settings" aria-selected="false"><strong>Informes 📊</strong></a>
+                    <a class=" nav-link" id="v-pills-messages-tab" href="perfilUser.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Perfil 😎</strong></a>
                 </div>
             </div>
             <div class="col-9">
@@ -116,11 +116,12 @@
                         <div class="p-4">
                             <h2>Informe de sus viajes ✈</h2> <hr> 
                             <!-- Tabla -->
-                            <?php
-                             include("conexion.php");
-                                $sql = "SELECT * FROM  viajes where codigoViaje = '$cod_v'";
+                                     <!-- viaje2 -->
+                                     <?php
+                                $sql = "SELECT * FROM  viaje2 WHERE ced_Viajero ='$IDUser'";
                                 $consulta =  mysqli_query($conn, $sql);
-
+                                $linea = mysqli_num_rows($consulta);
+                                
                                 echo "<table class=table-bordered>";
                                     echo"<thead class=bg-dark>";
                                         echo "<tr class=text-white>";
@@ -130,9 +131,68 @@
                                             echo "<td class=p-1 align=center> Fecha Salida</td>";
                                             echo "<td class=p-1 align=center> Fecha Regreso</td>";
                                             echo "<td class=p-1 align=center> Hora Viaje</td>";
-                                            echo "<td class=p-1 align=center> Cédula Viajero </td>";
                                             echo "<td class=p-1 align=center> Código Origen </td>";
                                             echo "<td class=p-1 align=center> Código Destino </td>";
+                                        echo "</tr>";
+                                    echo"</thead>";
+
+                                if ($linea) {  
+
+                                    while ($registro = mysqli_fetch_assoc($consulta)) {
+                                        echo"<tr>";
+                                            $codigoxX = $registro["codigo_Viaje"];
+                                            echo"<td>";
+                                                echo $codigoxX;
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['num_Asientos'];
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo "$ ".$registro['costo_Viaje'];
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['fecha_Salida'];
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['fecha_Regreso'];
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['hora_Viaje'];
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['cod_Origen'];
+                                            echo"</td>";
+
+                                            echo"<td>";
+                                                echo $registro['cod_Destino'];
+                                            echo"</td>";
+
+                                        echo"</tr>";
+                                    }
+                                }
+                            ?>
+                            <!-- tabla -->
+                            <?php
+                                $sql = "SELECT * FROM  viajes where codigoViaje = '$cod_v'";
+                                $consulta =  mysqli_query($conn, $sql);
+
+                                echo "<table class=table-bordered>";
+                                    echo"<thead class=bg-white>";
+                                        echo "<tr class=text-white>";
+                                        echo "<td class=p-1 align=center> Código Viaje</td>";
+                                        echo "<td align=center> Cantidad Asientos </td>";
+                                        echo "<td class=p-1 align=center> Costo </td>";
+                                        echo "<td class=p-1 align=center> Fecha Salida</td>";
+                                        echo "<td class=p-1 align=center> Fecha Regreso</td>";
+                                        echo "<td class=p-1 align=center> Hora Viaje</td>";
+                                        echo "<td class=p-1 align=center> Código Origen </td>";
+                                        echo "<td class=p-1 align=center> Código Destino </td>";
                                         echo "</tr>";
                                     echo"</thead>";
 
@@ -168,10 +228,6 @@
                                             echo"</td>";
 
                                             echo"<td>";
-                                                #echo $registro['cedulaViajero'];
-                                            echo"</td>";
-
-                                            echo"<td>";
                                                 echo $registro['codigo_Origen'];
                                             echo"</td>";
 
@@ -186,6 +242,46 @@
                             ?>
                             <!-- fin TABLA -->
                         </div>  
+                        <hr>
+                        <div class="p-4">
+                        <h2>Informe de la Reservación 🏢</h2> <hr> 
+                            <!-- Tabla de reservacion  -->
+                            <div class="container">
+                            <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                    <th scope="col">codigo Reservación</th>
+                                    <th scope="col">Fecha de Reservación</th>
+                                    <th scope="col">Estado de la Reservación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?Php
+                                        $conn = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
+
+                                        $sql = "SELECT * FROM  reservacion where cedula_viajero ='$IDUser' ";
+                                        $consulta =  mysqli_query($conn, $sql);
+                                        $fila = mysqli_num_rows($consulta);
+                
+                                        if ($fila) {
+                                                while ($registro = mysqli_fetch_assoc($consulta)) {
+                                                        $codigoReservacion = $registro["codigoReservacion"];
+                                                        $fechaReservacion = $registro["fechaReservacion"];
+                                                        $estadoReservacion = $registro["estadoReservacion"];
+                                                        ?>
+                                                        <tr>
+                                                            <td><?php echo $codigoReservacion;?></td>
+                                                            <td><?php echo $fechaReservacion;?></td>
+                                                            <td><?php echo $estadoReservacion;?></td>
+                                                        </tr>
+                                                <?php
+                                                }
+                                        }
+                                    ?>
+                                </tbody>
+                                </table>
+                            </div>
+                            </div>
                     </div> <!--Fin de la ventana principal -->
                 </div>
             </div>

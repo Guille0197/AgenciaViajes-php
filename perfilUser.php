@@ -1,3 +1,6 @@
+<?php 
+    include("verificar.php"); 
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -35,7 +38,6 @@
 </head>
 
 <body>
-    <?php include("verificar.php"); ?>
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
@@ -97,9 +99,9 @@
             <div class="col-3 bg-dark">
                 <div class=" nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="  nav-link" href="registro.php" role="tab" aria-controls="v-pills-home" aria-selected="true"><strong>Registrar Datos 📌</strong></a>
-                    <a class=" nav-link active"  href="consultar.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Perfil 😎</strong></a>
                     <a class=" nav-link"  href="reservacion.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Reservación 🧳</strong></a>
                     <a class="  nav-link" href="informe.php" role="tab" aria-controls="v-pills-settings" aria-selected="false"><strong>Informe 📊</strong></a>
+                    <a class=" nav-link active"  href="consultar.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Perfil 😎</strong></a>
                 </div>
             </div>
             <div class="col-9 p-2">

@@ -21,7 +21,7 @@
     $consulta =  mysqli_query($conn, $sql);
   }
 
-  //Envia del checkout a registro
+  //Envia del checkout a informe
     if (isset($_POST['btn_checkout'])) {  
       $precioTotal = $_POST["precioTotal"];
       $codX = $_POST["codX"];
@@ -40,6 +40,34 @@
       if ($sql) {
               header('Location: informe.php');
       }
+      ?> 
+        <script>
+            function checkout(){
+                alert("¡GRACIAS! EL pago del viaje sea realizado correctamente ✈😍 ");
+            }
+        </script>
+      <?php
+    }
+
+    //Envia del checkout2 a informe
+    if (isset($_POST['btn_checkout2'])) {  
+      $priceTotal = $_POST["priceTotal"];
+      $codiV = $_POST["codiV"];
+
+  //Insertar datos en la tabla viajes el costo total 
+    $sql = "UPDATE viaje2 SET costo_Viaje = '$priceTotal' WHERE codigo_Viaje = '$codiV' ";
+    $consulta =  mysqli_query($conn, $sql);
+
+      if ($sql) {
+              header('Location: informe.php');
+      }
+      ?> 
+        <script>
+            function checkout(){
+                alert("¡GRACIAS! EL pago del viaje sea realizado correctamente ✈😍 ");
+            }
+        </script>
+      <?php
     }
 
   //Inicia Sesion del usuario registrado
@@ -128,3 +156,4 @@
 
 
 ?>
+

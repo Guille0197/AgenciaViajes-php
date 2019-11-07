@@ -112,11 +112,11 @@
                 <div class="nav flex-column nav-pills p-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="  nav-link active " href="registro.php" role="tab" aria-controls="v-pills-home"
                         aria-selected="true"><strong>Registrar Datos 📌</strong></a>
-                    <a class=" nav-link" href="perfilUser.php" role="tab" aria-controls="v-pills-messages"
-                        aria-selected="false"><strong>Perfil 😎</strong></a>
                         <a class=" nav-link"  href="reservacion.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Reservación 🧳</strong></a>
                     <a class="  nav-link" href="informe.php" role="tab" aria-controls="v-pills-settings"
                         aria-selected="false"><strong>Informe 📊</strong></a>
+                    <a class=" nav-link" href="perfilUser.php" role="tab" aria-controls="v-pills-messages"
+                        aria-selected="false"><strong>Perfil 😎</strong></a>
                 </div>
             </div>
             <div class="col-9">
@@ -129,17 +129,16 @@
                         <div class="p-4">
                             <h2>Ingrese los datos de su nuevo viaje ✈ 🛂</h2>
                             <hr>
-                            
                             <!-- Formulario -->
                             <form action="codigo.php" method="POST">
                                 
                                 <div class="form-row">                                    
-                                    <div class="form-group">
-                                        <input type="text" name="precio_viaje"
+                                    <div class="form-group col-md-6">
+                                        <input type="hidden" name="precio_viaje"
                                             class="text-success btn btn-lg bg-white font-weight-bold text-left"
                                             value="<?php echo  mt_rand(250,3000); ?> ">
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-6">
                                         <input type="hidden" name="codigo_viaje"
                                             class="text-danger btn btn-lg bg-white font-weight-bold"
                                             value="<?php echo rand(100,10000); ?> ">
@@ -173,13 +172,13 @@
 
                                     <div class="form-group col-md-6">
                                         <label>Lugar Origen </label>
-                                        <select name="nombre_origen"  class="form-control">
+                                        <select name="nombre_origen"  class="form-control" required>
                                             <option disabled selected >Lugar de Origen</option>
                                             <?php
                                                 $query = $mysqli -> query ("SELECT * FROM origen");
                                                 while ($valorOrigen = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
                                             ?>
-                                                    <option value="<?php echo $valorOrigen['codigoOrigen'] ?>" > <?php echo $valorOrigen['nombreOrigen'] ?> </option>
+                                                    <option required value="<?php echo $valorOrigen['codigoOrigen'] ?>" > <?php echo $valorOrigen['nombreOrigen'] ?> </option>
                                             <?php
                                                 }
                                             ?>
@@ -188,13 +187,13 @@
 
                                     <div class="form-group col-md-6">
                                         <label>Lugar Destino</label>
-                                        <select name="nombre_destino" class="form-control">
+                                        <select name="nombre_destino" class="form-control" required>
                                             <option disabled selected >Lugar de Destino</option>
                                             <?php
                                                 $query = $mysqli -> query ("SELECT * FROM destino");
                                                 while ($valorDestino = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
                                             ?>
-                                                    <option value="<?php echo $valorDestino['codigoDestino'] ?>" > <?php echo $valorDestino['nombreDestino'] ?> </option>
+                                                    <option required value="<?php echo $valorDestino['codigoDestino'] ?>" > <?php echo $valorDestino['nombreDestino'] ?> </option>
                                             <?php
                                                 }
                                             ?>
@@ -223,6 +222,8 @@
                                 <!-- Boton de enviar los datos -->
                                 <button type="submit" name="add_registro_viaje" class="btn btn-block btn-success py-3 px-5  ">
                                     <strong>Siguiente ➡</strong></button>
+
+                                <input type="hidden" name="id_usuario" value="<?Php echo"$IDUser";?>">
                             </form>
                             <!-- fin formulario -->
                         </div>

@@ -1,8 +1,17 @@
 <?php 
-    //include("codigo.php");
-    // include("conexion.php");
+    include("codigo.php");
     include("verificar.php");
+    $mysqli = mysqli_connect("localhost", "root", "", "bd_agenciaViaje");
 
+    $sql = "SELECT * FROM  viajes where codigoViaje = '$cod_v'";
+    $consulta =  mysqli_query($conn, $sql);
+    $linea = mysqli_num_rows($consulta);
+
+    if ($linea) {  
+        while ($registro = mysqli_fetch_assoc($consulta)) {
+            $fechaSalida =  $registro['fechaSalida'];
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -101,9 +110,9 @@
             <div class="col-3 bg-dark">
                 <div class=" nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="  nav-link" id="v-pills-home-tab"  href="registro.php" role="tab" aria-controls="v-pills-home" aria-selected="true"><strong>Registrar Datos 📌</strong></a>
-                    <a class=" nav-link" id="v-pills-messages-tab" href="perfilUser.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Perfil 😎</strong></a>
                     <a class=" nav-link active"  href="#" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Reservación 🧳</strong></a>
                     <a class="  nav-link"  href="informe.php" role="tab" aria-controls="v-pills-settings" aria-selected="false"><strong>Informes 📊</strong></a>
+                    <a class=" nav-link" id="v-pills-messages-tab" href="perfilUser.php" role="tab" aria-controls="v-pills-messages" aria-selected="false"><strong>Perfil 😎</strong></a>
                 </div>
             </div>
             <div class="col-9">
@@ -115,7 +124,7 @@
 
                         <div class="p-4">
                             <!--Reservacion  -->
-                            <h2>Reservación 🧳</h2> <hr>
+                            <h2>Reservación Para vuelo🧳</h2> <hr>
                                      <form action="codigo.php" method="post">
                                         <div class="form-row">
                                             <div class="form-group col-md-5">
@@ -126,7 +135,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Fecha de la Reservación</label>
-                                                <input type="text" name="fechaReservacion" class="form-control checkin_date" value=" ">
+                                                <input type="text" name="fechaReservacion" class="form-control checkin_date" value=" <?php  echo "$fechaSalida"; ?>">
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label>Estado de la Reservación</label> <br>
@@ -146,7 +155,7 @@
                                      </form>
                         </div>  
                         <div class="p-4">
-                        <h2>Informe de la Reservación 🏢</h2> <hr> 
+                        <h2>Sus Reservaciones 🏢</h2> <hr> 
                             <!-- Tabla de reservacion  -->
                             <div class="container">
                             <table class="table table-bordered">
